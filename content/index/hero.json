@@ -1,0 +1,32 @@
+{
+	"intro": {
+		"start": "const Profession = Software Developer;",
+		"end": "const name = Himanshu;",
+		"speed": 60,
+		"deletionSpeed": 80,
+		"wrapper": "h2",
+		"startDelay": 1000,
+		"deleteDelay": 3000,
+		"restartDelay": 12000
+	},
+
+	"header": {
+		"name": "Himanshu.",
+		"usp": "I design and build meaningful experiences."
+	},
+
+	"paragraph": "A passionate software developer, combines technical expertise with innovative problem-solving to deliver robust solutions that exceed expectations.",
+
+	"buttons": {
+		"primary": {
+			"title": "LinkedIn",
+			"url": "https://www.linkedin.com/in/the_developer_dude/",
+			"leaveSite": "true"
+		},
+		"tertiary": {
+            "title": "Resume",
+			"url": "https://drive.google.com/file/d/1MjLVWCdZIg8QnB0_7IJ-nXAW14fmFHAH/view?usp=drive_link",
+			"leaveSite": "true"
+        }
+	}
+}

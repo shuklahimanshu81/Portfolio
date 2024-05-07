@@ -1,0 +1,25 @@
+{
+
+	"links": [
+		{ 
+			"person": "Mail us on",
+			"link": "mailto: himanshu2361999@gmail.com",
+			"note": "himanshu2361999@gmail.com."
+		}
+	],
+
+	"social": [
+		{
+			"url": "https://www.linkedin.com/in/the_developer_dude/",
+			"icon": "linkedin"
+		},
+		{
+			"url": "https://github.com/shuklahimanshu81",
+			"icon": "github"
+		},
+		{
+			"url": "https://instagram.com/himan.shu.kla",
+			"icon": "instagram"
+		}
+	]
+}
