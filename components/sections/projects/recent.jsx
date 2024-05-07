@@ -33,7 +33,7 @@ export default function GitProjects({ repos, user }) {
 				</section>
 				<div className={css.projects}>
 					{
-					repos.map( ({ name, description, topics, forks_count, html_url, language, watchers, homepage, pushed_at }, index) => {
+					 repos?.map( ({ name, description, topics, forks_count, html_url, language, watchers, homepage, pushed_at }, index) => {
 						const date = new Date(pushed_at).toDateString()
 						return (
 							<>

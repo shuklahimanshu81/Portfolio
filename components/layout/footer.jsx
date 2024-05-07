@@ -39,7 +39,7 @@ export default function Footer() {
 						content.links.map( ({ person, link, note }, index) => {
 							return (
 								<li key={index}>
-									<a href={link} target='_self' rel="noreferrer">{person} <Icon icon={[ 'fad', 'arrow-up-right-from-square' ]} /></a>
+									<a href={link} target='_self' rel="noreferrer">{person} <i className={`fa-solid fa-arrow-up-right-from-square`}></i></a>
 									<p>{note}</p>
 								</li>
 							)
@@ -52,7 +52,7 @@ export default function Footer() {
 							{
 							content.social.map( ({ url, icon }, index) => {
 								return (
-									<a  key={index} href={url} rel="noreferrer" target="_blank"><Icon icon={[ 'fab', icon ]} /></a>
+									<a  key={index} href={url} rel="noreferrer" target="_blank"><i className={`fa-brands fa-${icon}`}></i></a>
 								)
 							})
 							}
