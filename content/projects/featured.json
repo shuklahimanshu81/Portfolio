@@ -1,0 +1,46 @@
+[
+	{
+		"project": "Marketplace Application",
+		"url": "https://github.com/",
+		"repo": "Private",
+		"descriptionTitle": "An online marketplace for different services",
+		"description": "which connects people who provide different services like renting, grooming, consulting to people who need these services",
+		"imageOptions": [
+		],
+		"images": [
+			{ "key": "mock-stack",	"hover": "right", 	"h": "1200", "w": "556", "url": "/img/msc-mock_stack/03.png" },
+			{ "key": "mock-stack",	"hover": "right",	"h": "1200", "w": "556", "url": "/img/msc-mock_stack/02.png" },
+			{ "key": "mock-stack",	"hover": "left",	"h": "1200", "w": "556", "url": "/img/msc-mock_stack/01.png" }
+		],
+		"stack": [
+			{ "key": "html5",		"name": "HTML5", 		"type": "devicon" },
+			{ "key": "css3",		"name": "CSS3", 		"type": "devicon" },
+			{ "key": "javascript", 	"name": "JavaScript", 	"type": "devicon" },
+			{ "key": "bootstrap",	"name": "bootstrap", 	"type": "devicon" },
+			{ "key": "react",       "name": "React js", 	"type": "devicon" },
+			{ "key": "git",			"name": "Git(Hub)", 	"type": "devicon" },
+			{ "key": "react", 	        "name": "Redux toolkit", 	"type": "fas"     },
+			{ "key": "firebase",		"name": "firebase", 		"type": "devicon" },
+			{ "key": "Stripe",		"name": "Stripe", 	    "type": "devicon" },
+			{"key" : "aws", "name" : "AWS Cognito (Authentication)" , "type" : "devicon" }
+		]
+	},
+	{
+		"project": "Blossom UI",
+		"url": "https://github.com/shuklahimanshu81/Blossom-UI",
+		"repo": "Public",
+		"descriptionTitle": "A HTML component library",
+		"description": "that provides different components (cards, buttons etc.) to be used in your next project",
+		"imageOptions": [
+			{ "key": "size", 		"value": "large" }
+		],
+		"images": [
+			{ "key": "portfolio", "hover": "left", "h": "600", "w": "556",  "url": "/img/project-img.png" }
+		],
+		"stack": [
+			{ "key": "html5",		"name": "HTML5", 		"type": "devicon" },
+			{ "key": "css3",		"name": "CSS3", 		"type": "devicon" },
+			{ "key": "git",			"name": "Git(Hub)", 	"type": "devicon" }
+		]
+	}
+]
