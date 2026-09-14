@@ -1,9 +1,9 @@
 {
 	"dark": {
-		"mesh__secondaryDark": 	"#060708",
-		"mesh__secondaryLight": "#07120e",
-		"mesh__primaryDark": 	"#06050a",
-		"mesh__primaryLight": 	"#0c1019"
+		"mesh__secondaryDark": 	"#06080c",
+		"mesh__secondaryLight": "#050a12",
+		"mesh__primaryDark": 	"#050a0f",
+		"mesh__primaryLight": 	"#08161c"
 	},
 	"light": {
 

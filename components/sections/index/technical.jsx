@@ -24,65 +24,68 @@ export default function Technical() {
 				<SectionTitle
 					title="Technical"
 					preTitle="Hardskills"
-					subTitle="As a creative technologist, I craft intuitive digital experiences using a diverse set of tools and languages."
+					subTitle="4+ years building high-performance, scalable frontends — from real-time trading UIs to retail investment platforms."
 				/>
 				<section className={`${about.content} ${about.container}`}>
 					<div className={about.copy}>
-						<CopyBlock 
-							title="Javascript"
-							icon={[ 'fat', 'chart-network' ]}
-							copy="With a strong foundation in front-end, I bring a unique perspective to every project and am constantly learning and evolving to stay up-to-date with the latest industry trends."
+						<CopyBlock
+							title="Languages & Practices"
+							icon={[ 'fas', 'code-branch' ]}
+							copy="JavaScript, TypeScript, and Pine Script are my daily drivers, backed by a strong focus on accessibility (WCAG / ARIA) and web performance optimization — the two practices I keep coming back to on every project."
 							iconClass={about.icon}
 							containerClass={about.container}
 						/>
-						<BadgesBlock 
-							title="Software I love to work with" 
-							copy="As a newcomer am exited to work work with your digital assets, I have a deep and intuitive understanding of how the interfaces of the best software products in the world are designed. This is just some of the software I have used over that time."
+						<BadgesBlock
+							title="Core stack"
+							copy="React, Next.js, and Redux Toolkit power everything I ship — from mutual fund cart flows to real-time option-chain streaming."
 							list={software}
-							block="software" 
+							block="software"
 							fullContainer="fullContainer"
-							icon="grid-2-plus"
-							containerClass={about.container}
-							headerIcon={about.icon} 
-						/>
-						<BadgesBlock 
-							title="Technologies I love to build with" 
-							copy="I deeply enjoy solving problems through code. From the front end all the way to the back end and the APIs in-between. No project is too challenging for me."
-							list={tech} 
-							block="tech"
-							fullContainer="fullContainer" 
 							icon="laptop-code"
 							containerClass={about.container}
-							headerIcon={about.icon} 
-						/>							
+							headerIcon={about.icon}
+						/>
+						<BadgesBlock
+							title="Tools & platforms"
+							copy="The libraries and tooling I rely on for testing, monitoring, and shipping production-grade frontends."
+							list={tech}
+							block="tech"
+							fullContainer="fullContainer"
+							icon="server"
+							containerClass={about.container}
+							headerIcon={about.icon}
+						/>
 					</div>
 					<div className={`${about.image} ${about.technicalSvg}`}>
 						<Image src="/img/dataism-24.svg" width={477} height={1111} alt="Data Strings 01 by Colorpong: https://ywft.us/2177b695b" />
 					</div>
-				</section>	
+				</section>
 			</Container>
-			
+
 		</Section>
 	)
 }
 
 const software = [
-	{ key: 'canva', 	    name: 'Canva', 			    type: 'devicon' },
-	{ key: 'github', 	    name: 'Github', 		    type: 'devicon' },
-	{ key: 'figma', 		name: 'Figma', 				type: 'devicon' },
-	{ key: 'vscode', 		name: 'VSCode', 			type: 'devicon' },
-	{ key: 'mailbox', 		name: 'Postman', 			type: 'fas' },
+	{ key: 'javascript', 	name: 'JavaScript', 		type: 'devicon' },
+	{ key: 'typescript', 	name: 'TypeScript', 		type: 'devicon' },
+	{ key: 'react', 		name: 'React', 				type: 'devicon' },
+	{ key: 'nextjs', 		name: 'Next.js', 			type: 'devicon' },
+	{ key: 'redux', 		name: 'Redux Toolkit', 	type: 'devicon' },
+	{ key: 'html5', 		name: 'HTML5', 				type: 'devicon' },
+	{ key: 'css3', 			name: 'CSS3', 				type: 'devicon' },
+	{ key: 'wave-square', 	name: 'WebSockets', 		type: 'fas' },
 ]
 
 const tech	= [
-	{ key: 'javascript', 	name: 'JavaScript', 		type: 'devicon' },
-	{ key: 'react', 		name: 'React', 				type: 'devicon' },
-	{ key: 'nextjs', 		name: 'NextJS', 			type: 'devicon' },
-	{ key: "c",		        name: "Chatgpt", 			type: "devicon" },
-	{ key: 'html5', 		name: 'HTML5', 				type: 'devicon' },
-	{ key: 'css3', 			name: 'CSS3', 				type: 'devicon' },
+	{ key: 'webpack', 		name: 'Webpack', 			type: 'devicon' },
+	{ key: 'babel', 		name: 'Babel', 				type: 'devicon' },
+	{ key: 'jest', 			name: 'Jest & Enzyme', 		type: 'devicon' },
+	{ key: 'sentry', 		name: 'Sentry', 			type: 'devicon' },
+	{ key: 'chart-line', 	name: 'New Relic', 			type: 'fas' },
+	{ key: 'wave-square', 	name: 'TradingView Charting Library', type: 'fas' },
 	{ key: 'git', 			name: 'Git', 				type: 'devicon' },
-	{key : 'aws', name : 'AWS Cognito' , type: 'fas'},
-	{key : 'Netlify', name : 'Netlify' , type: 'fas'},
-	{key : 'Core UI', name : 'Core UI' , type: 'fas'},
+	{ key: 'github', 		name: 'GitHub', 			type: 'devicon' },
+	{ key: 'jira', 			name: 'Jira', 				type: 'devicon' },
+	{ key: 'amazonwebservices', name: 'AWS', 			type: 'devicon' },
 ]
