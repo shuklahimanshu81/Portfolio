@@ -1,6 +1,3 @@
-// Core packages
-import Image from 'next/image'
-
 // Section structure
 import Section from '../../structure/section';
 import Container from '../../structure/container';
@@ -12,6 +9,7 @@ import SectionGridBg from '../../blocks/section.grid.block'
 // Section specific blocks
 import BadgesBlock from '../../blocks/about.badges.block'
 import CopyBlock from '../../blocks/about.copy.block'
+import Terminal from '../../blocks/terminal.block'
 
 // Section scss
 import about from '../../../styles/sections/index/about.module.scss'
@@ -56,8 +54,8 @@ export default function Technical() {
 							headerIcon={about.icon}
 						/>
 					</div>
-					<div className={`${about.image} ${about.technicalSvg}`}>
-						<Image src="/img/dataism-24.svg" width={477} height={1111} alt="Data Strings 01 by Colorpong: https://ywft.us/2177b695b" />
+					<div className={`${about.image} ${about.terminalColumn}`}>
+						<Terminal />
 					</div>
 				</section>
 			</Container>

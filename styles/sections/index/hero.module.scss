@@ -3,15 +3,50 @@
 //global.module.scss
 .section {
 	border-bottom: 1px solid var(--primary-dark);
-	
+
 	max-height: 1440px;
-	height: 100vh;
+	min-height: 100vh;
+	height: auto;
+	padding-top: var(--size-4x);
+	padding-bottom: var(--size-4x);
 	justify-content: center;
-	
+
 	> .container {
 		height: fit-content;
 	}
-	
+
+	.stats {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: var(--size-3x);
+		margin-top: var(--size-3x);
+		padding-top: var(--size-2x);
+		border-top: 1px solid var(--primary-dark);
+	}
+
+	.stat {
+		display: flex;
+		flex-direction: column;
+		gap: .1rem;
+		min-width: 8rem;
+	}
+
+	.statValue {
+		font-family: var(--font-accent);
+		font-weight: 700;
+		font-size: 2rem;
+		background: linear-gradient(90deg, var(--neon-1-1) 0%, var(--neon-1-2) 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.statLabel {
+		font-size: .8rem;
+		color: var(--primary-dim);
+	}
+
 	.preHeader {
 		color: var(--secondary);
 		font-family: var(--font-accent);
@@ -67,6 +102,15 @@
 		button {
 			font-size: .875rem;
 			padding: 0.75rem 2rem;
+		}
+		.stats {
+			gap: var(--size-2x);
+		}
+		.stat {
+			min-width: calc(50% - var(--size-1x));
+		}
+		.statValue {
+			font-size: 1.5rem;
 		}
 	}
 }

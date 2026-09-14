@@ -1,11 +1,25 @@
 button {
 
+	&.primary,
+	&.secondary {
+		transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s ease, background-color .3s ease, color .3s ease, border-color .3s ease;
+
+		&:hover {
+			transform: translateY(-2px);
+		}
+
+		&:active {
+			transform: translateY(0);
+		}
+	}
+
 	&.primary {
 		background-color: var(--secondary);
 		color: var(--background);
 
 		&:hover {
 			background-color: var(--secondary-bright);
+			box-shadow: 0 0.75rem 2rem -0.5rem var(--secondary);
 		}
 	}
 
@@ -17,6 +31,7 @@ button {
 		&:hover {
 			color: var(--primary-bright);
 			background-color: var(--primary-dark);
+			border-color: var(--secondary);
 		}
 	}
 }

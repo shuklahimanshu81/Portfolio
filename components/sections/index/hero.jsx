@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+import { m } from "framer-motion";
 
 import Section from "../../structure/section";
 import Container from "../../structure/container";
@@ -82,11 +83,47 @@ export default function Hero() {
             {content.buttons.primary.title}
           </button>
             <button  className={`button ${button.secondary} leaveSite`}
-            onClick={()=>window.open(content.buttons.tertiary.url, "_black")}
+            onClick={()=>window.open(content.buttons.tertiary.url, "_blank")}
             >{content.buttons.tertiary.title}</button>
         </section>
+        <m.section
+          className={hero.stats}
+          initial="hidden"
+          animate="visible"
+          variants={statContainer}
+        >
+          {stats.map(({ value, label }) => (
+            <m.div key={label} className={hero.stat} variants={statItem}>
+              <span className={hero.statValue}>{value}</span>
+              <span className={hero.statLabel}>{label}</span>
+            </m.div>
+          ))}
+        </m.section>
       </Container>
       <HeroBg theme="bg-color-1" />
     </Section>
   );
 }
+
+const stats = [
+  { value: "4+", label: "Years of experience" },
+  { value: "3", label: "Fintech platforms shipped" },
+  { value: "~75%", label: "Fewer re-renders, option chain" },
+  { value: "~40%", label: "Faster page loads, IPO/NCD" },
+];
+
+const statContainer = {
+  hidden: {},
+  visible: {
+    transition: { delayChildren: 1.1, staggerChildren: 0.12 },
+  },
+};
+
+const statItem = {
+  hidden: { y: 16, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "tween", ease: "easeOut", duration: 0.5 },
+  },
+};
