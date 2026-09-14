@@ -30,43 +30,41 @@ export default function About() {
 				<SectionTitle
 					title="About Me"
 					preTitle="Synopsis"
-					subTitle="With a diverse skill set that includes Front-end, Back-end."
+					subTitle="Frontend Developer (SDE-2) with 4+ years of experience building high-performance, scalable web applications."
 				/>
 				<section className={about.content}>
 					<div className={about.image}>
 						<Image src="/img/back.jpg" layout='fill'/>
 					</div>
 					<div className={about.copy} >
-						<CopyBlock 
-							title="Softskills"
+						<CopyBlock
+							title="How I work"
 							containerClass={about.container}
 							iconClass={about.icon}
-							icon={[ 'fat', 'ear-listen' ]}
-							copy="In addition to my technical expertise—I also have understanding about user-experience, time management, and multitasking skills—honed through my experience. Outside of work, I enjoy staying active through sports such as running and cricket. I am confident in my ability to bring passion and value to any project."
+							icon={[ 'fas', 'bolt' ]}
+							copy="I own frontend modules end-to-end — from architecture and performance budgets down to the pixel-level UX details. At INDmoney I build the web experience for a social trading platform and optimize real-time option-chain streaming; at SMC Global I led the frontend for a retail investment platform built from scratch in 6 months. I care about clean code, measurable performance wins, and interfaces that are accessible by default. Outside of work, I enjoy running and cricket."
 						/>
-						<BadgesBlock 
-							title="Reasearch and planning" 
+						<BadgesBlock
+							title="What I focus on"
 							containerClass={about.container}
-							list={methods} 
+							list={methods}
 							fullContainer="fullContainer"
-							block="methods" 
+							block="methods"
 							icon="fingerprint"
-							copy="One of my favorite aspects of creating is planning the architecture of a project. I enjoy working with the many touch points of user experience."
+							copy="From cutting rendered tick updates by ~75% through virtualization to championing WCAG-aligned UI standards adopted team-wide, I care about the details that make software fast, reliable, and usable by everyone."
 							//invertedColor="invertedColor"
 							headerIcon={`${about.icon}`}
 						/>
 					</div>
-				</section>	
+				</section>
 			</Container>
 		</Section>
 	)
 }
 
 const methods 	= [
-	{ key: 'planet-moon', 		name: 'User Research', 		type: 'fad' },
-	{ key: 'qrcode', 			name: 'Digital Strategy', 	type: 'fad' },
-	{ key: 'window', 			name: 'UI Design', 	        type: 'fad' },
-	{ key: 'cubes', 			name: 'Product Strategy', 	type: 'far' },
-	// { key: 'layer-plus', 		name: 'Brand Strategy', 	type: 'fad' },
-	// { key: 'solar-system', 		name: 'Operations', 		type: 'fad' },
+	{ key: 'gauge-high', 		name: 'Performance Optimization', 	type: 'fas' },
+	{ key: 'universal-access', 	name: 'Accessibility (WCAG/ARIA)', 	type: 'fas' },
+	{ key: 'wave-square', 		name: 'Real-time Data & Streaming', 	type: 'fas' },
+	{ key: 'layer-group', 		name: 'Clean Architecture', 		type: 'fas' },
 ]

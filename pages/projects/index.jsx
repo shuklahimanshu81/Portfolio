@@ -33,15 +33,21 @@ export async function getServerSideProps({ res }) {
 	
 	let [ user, repos] = await Promise.all( [
 		gitUserRes.json(),
-		gitReposRes.json(), 
+		gitReposRes.json(),
 	] )
 
-	if (user.login) {
-		user = [user].map( 
+	if (user?.login) {
+		user = [user].map(
 			({ login, name, avatar_url, html_url }) => ({ login, name, avatar_url, html_url })
 		)
+	} else {
+		user = null
 	}
-	
+
+	if (! Array.isArray(repos)) {
+		repos = []
+	}
+
 	if (repos.length) {
 		repos = repos.map( 
 			({ name, fork, description, forks_count, html_url, language, watchers, default_branch, homepage, pushed_at, topics }) => {
@@ -57,8 +63,6 @@ export async function getServerSideProps({ res }) {
 			return false
 		})
 	}
-
-	if (!repos || !user) { return { notFound: true,	} }
 
 	return { props: { repos, user } }
 }

@@ -1,7 +1,7 @@
 {
 	"intro": {
-		"start": "const Profession = Software Developer;",
-		"end": "const name = Himanshu;",
+		"start": "const role = \"Frontend Engineer, SDE-2\";",
+		"end": "const focus = \"performance & real-time UI\";",
 		"speed": 60,
 		"deletionSpeed": 80,
 		"wrapper": "h2",
@@ -12,10 +12,10 @@
 
 	"header": {
 		"name": "Himanshu.",
-		"usp": "I design and build meaningful experiences."
+		"usp": "I build fast, accessible frontends for fintech products."
 	},
 
-	"paragraph": "A passionate software developer, combines technical expertise with innovative problem-solving to deliver robust solutions that exceed expectations.",
+	"paragraph": "Frontend Developer (SDE-2) with 4+ years of experience building high-performance, scalable web applications with React, Next.js, and Redux Toolkit — currently shipping real-time trading experiences at INDmoney.",
 
 	"buttons": {
 		"primary": {
@@ -25,7 +25,7 @@
 		},
 		"tertiary": {
             "title": "Resume",
-			"url": "https://drive.google.com/file/d/1TIHQoDK1gLe0W4q2ebWOAylEs-K-7bS4/view?usp=sharing",
+			"url": "/resume/Himanshu-Shukla-Resume.pdf",
 			"leaveSite": "true"
         }
 	}

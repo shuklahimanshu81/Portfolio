@@ -3,8 +3,8 @@
 		"project": "Marketplace Application",
 		"url": "https://github.com/",
 		"repo": "Private",
-		"descriptionTitle": "An online marketplace for different services",
-		"description": "which connects people who provide different services like renting, grooming, consulting to people who need these services",
+		"descriptionTitle": "A services marketplace built at Algoworks",
+		"description": "connecting people who provide services like renting, grooming, and consulting to the people who need them — with real-time chat, authentication, and payments",
 		"imageOptions": [
 		],
 		"images": [
@@ -16,13 +16,13 @@
 			{ "key": "html5",		"name": "HTML5", 		"type": "devicon" },
 			{ "key": "css3",		"name": "CSS3", 		"type": "devicon" },
 			{ "key": "javascript", 	"name": "JavaScript", 	"type": "devicon" },
-			{ "key": "bootstrap",	"name": "bootstrap", 	"type": "devicon" },
+			{ "key": "bootstrap",	"name": "Bootstrap", 	"type": "devicon" },
 			{ "key": "react",       "name": "React js", 	"type": "devicon" },
+			{ "key": "redux", 	    "name": "Redux Toolkit", 	"type": "devicon" },
 			{ "key": "git",			"name": "Git(Hub)", 	"type": "devicon" },
-			{ "key": "react", 	        "name": "Redux toolkit", 	"type": "fas"     },
-			{ "key": "firebase",		"name": "firebase", 		"type": "devicon" },
-			{ "key": "Stripe",		"name": "Stripe", 	    "type": "devicon" },
-			{"key" : "aws", "name" : "AWS Cognito (Authentication)" , "type" : "devicon" }
+			{ "key": "firebase",		"name": "Firebase", 		"type": "devicon" },
+			{ "key": "stripe",		"name": "Stripe", 	    "type": "fab" },
+			{ "key": "amazonwebservices", "name": "AWS Cognito (Authentication)" , "type": "devicon" }
 		]
 	},
 	{

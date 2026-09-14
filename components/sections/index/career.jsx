@@ -26,19 +26,20 @@ export default function Career() {
 				<SectionTitle
 					title="Experience"
 					preTitle="Career"
-					subTitle="I am current managing, designing, and developing all consumer and digital product initiatives at My Supply Co."
+					subTitle="4+ years building high-performance frontends across fintech and marketplace platforms."
 				/>
 				<section className={career.area}>
+
 					<article className={career.company}>
 						<div className={career.companyContent}>
 							<span className={career.companyHeader}>
-								<h3>My Supply Co.</h3>
-								<h4>Permanent Full-time</h4>
-								<h4>Apr 2019 - Present · 3 yrs 10 mos</h4>
-								<h5>Vancouver, British Columbia, Canada</h5>
+								<h3>INDmoney</h3>
+								<h4>SDE – 2 (Frontend)</h4>
+								<h4>Feb 2026 – Present</h4>
+								<h5>Gurugram, India</h5>
 							</span>
 							<p>
-							My Supply Co. helps Canadians manage mental and physical health with naturally occurring nootropic and adaptogenic products. They carry products with complex attributes, aiming to solve a large variety of personal care needs — this requires an extremely customized and evolving approach to how the store is built and functions.
+							INDmoney is a wealth-tech platform for investing, trading, and managing money in one place. I work on INDsocial and the trading terminal — building the interfaces traders use to track positions, read charts, and place orders in real time.
 							</p>
 						</div>
 						<div className={career.companyAlt}></div>
@@ -47,78 +48,40 @@ export default function Career() {
 					<article className={career.companyPositions}>
 						<div className={career.position}>
 							<div className={career.positionContent}>
-								<span class={career.positionHeader}>
-									<h3>Director of Product Design and Development</h3>
-									<h4>Nov 2021 - Present · 1 yrs 3 mos</h4>
+								<span className={career.positionHeader}>
+									<h3>Key projects at INDmoney</h3>
 								</span>
-								<p>
-								I am responsible for the ideation, planning, and development of new consumer goods—and customer and employee facing microservice software. During these projects I work with key stakeholders within our company and supplychain to ensure and meet quality goals across multiple domains.
-								</p>
-							</div>
-							<div className={career.positionAlt}></div>
-						</div>
-
-						<div className={career.position}>
-							<div className={career.positionContent}>
-								<span class={career.positionHeader}>
-									<h3>Full Stack Developer & User Experience Designer</h3>
-									<h4>Feb 2020 - Nov 2021 · 1 yrs 10 mos</h4>
-								</span>
-								<p>
-								As the lead full stack developer I am responsible for all software development, CI/CD, and QA. This is for the front end, APIs, and the back end. Additionally I was tasked with identifying and analyzing weak points in the customer journey and employee workflows. Each project had to be estimated and prioritized based on its workload and immediate impact to efficiency or revenue. Some of these projects have been so successful internally that we have planned refactoring for commercialization. 
-								</p>
-								<p>
-								Some key projects complete during this time 👇
-								</p>
 								<ul className={career.list}>
 									<li>
-										Product attribute and settings automated testing
-										<span className={career.subList}><span className={career.bullet}></span>Eradicated critical data input errors</span>
+										Built the web experience for INDsocial, a social platform where users share trades, live positions, and portfolios
+										<span className={career.subList}><span className={career.bullet}></span>Implemented profile and post views with seamless deep-linking into the native app for transactional flows</span>
 									</li>
 									<li>
-										Inventory management reporting and automation 
-										<span className={career.subList}><span className={career.bullet}></span>Decreased purchasing labour by ~80%</span>
+										Optimized real-time option-chain streaming through virtualization
+										<span className={career.subList}><span className={career.bullet}></span>Cut rendered tick updates from ~200 to ~50 per cycle (~75% reduction), significantly lowering render load on the data-heavy options screen</span>
 									</li>
 									<li>
-										Sales management plugin with AJAX shopping cart integration
-										<span className={career.subList}><span className={career.bullet}></span>Increased AOV by 8.3%</span>
+										Designed and shipped custom TradingView indicators (CPR, Auto VWAP, Smart Money Concepts)
+										<span className={career.subList}><span className={career.bullet}></span>Converted Pine Script to JS and migrated rendering to native TradingView primitives to improve chart performance and reliability for live trading users</span>
 									</li>
 									<li>
-										Bespoke ID verification software and WooCommerce integration
-										<span className={career.subList}><span className={career.bullet}></span>Decreased Credit Card fraud by 98%</span>
+										Shipped an AI pattern-detection toolbar button that renders chart patterns on the terminal in real time
+										<span className={career.subList}><span className={career.bullet}></span>Consumes backend-detected historical pattern data to draw precise, deterministic overlays</span>
+									</li>
+									<li>
+										Integrated Sentry for client-side error monitoring and logging
+										<span className={career.subList}><span className={career.bullet}></span>Surfaced frontend errors that were previously invisible under the existing New Relic setup, significantly improving production debuggability</span>
+									</li>
+									<li>
+										Championed accessibility across the platform
+										<span className={career.subList}><span className={career.bullet}></span>Helped teammates on a11y best practices and established WCAG-aligned UI standards adopted team-wide</span>
+									</li>
+									<li>
+										Worked on the trade screen for the US Stocks product
+										<span className={career.subList}><span className={career.bullet}></span>Enabled users to place and manage US equity orders</span>
 									</li>
 								</ul>
-								<Badges list={fullStack} block="stack" fullContainer="fullContainer"/>
-							</div>
-							<div className={career.positionAlt}></div>
-						</div>
-					
-						<div className={career.position}>
-							<div className={career.positionContent}>
-									<span class={career.positionHeader}>
-										<h3>Front End Developer & User Interface Designer</h3>
-										<h4>Apr 2019 - Feb 2020 · 11 mos</h4>
-									</span>
-								<p>
-									I was brought on to help fill multiple creative rolls in a small start-up environment. Working with the marketing team to create the brand and logos — designing and developing a new front end for the website — and improving the users experience and store KPIs through design and merchandising optimizations.
-								</p>
-								<p>
-									Some key projects completed during this time 👇
-								</p>
-								<ul className={career.list}>
-									<li>
-										Full functionality interactive shopping cart to replace cart page
-										<span className={career.subList}><span className={career.bullet}></span>Increased conversions by 0.7%</span>
-									</li>
-									<li>Complex multi-state animated menus represented in an elegant UI 
-										<span className={career.subList}><span className={career.bullet}></span>Strong brand confidence booster with state of the art menu</span>
-									</li>
-									<li>
-										Design and development of the site and merchandising strategy optimized for market
-										<span className={career.subList}><span className={career.bullet}></span>7.1% overall conversion rate </span>
-									</li>
-								</ul>
-								<Badges list={stack} block="stack" fullContainer="fullContainer"/>
+								<Badges list={indmoney} block="stack" fullContainer="fullContainer"/>
 							</div>
 							<div className={career.positionAlt}></div>
 						</div>
@@ -127,65 +90,119 @@ export default function Career() {
 					<article className={career.company}>
 						<div className={career.companyContent}>
 							<span className={career.companyHeader}>
-								<h3>Another Creative Ltd.</h3>
-								<h4>Contract Part-time</h4>
-								<h4>Jun 2016 - Present · 6 yrs 8 mos</h4>
-								<h5>Vancouver, British Columbia, Canada</h5>
+								<h3>SMC Global</h3>
+								<h4>Member of Technical Staff – 2 (Frontend)</h4>
+								<h4>July 2024 – Feb 2026</h4>
+								<h5>Delhi, India</h5>
 							</span>
 							<p>
-							Another Creative is a full stack agency that helps deliver exceptional digital experiences to small and medium businesses. Branding, Marketing, and Web/Software Development.
+							SMC Global is one of India&apos;s largest financial services companies. I led frontend ownership of smceasyinvest.com, a full-scale retail investment platform, and was recognized with the Velocity Masters Award for consistently delivering high-impact features within aggressive timelines.
 							</p>
 						</div>
 						<div className={career.companyAlt}></div>
 					</article>
 
+					<article className={career.companyPositions}>
+						<div className={career.position}>
+							<div className={career.positionContent}>
+								<span className={career.positionHeader}>
+									<h3>Key projects at SMC Global</h3>
+								</span>
+								<ul className={career.list}>
+									<li>
+										Led frontend ownership of smceasyinvest.com, building core investment flows — mutual fund cart, SIP / lumpsum investments, redemptions, and scheme switching
+										<span className={career.subList}><span className={career.bullet}></span>Enabled a full-scale retail investment platform launched from scratch within 6 months by a 3-developer team</span>
+									</li>
+									<li>
+										Designed and delivered the NCD bond platform end-to-end in 3 days, taking complete UI/UX ownership without design support
+										<span className={career.subList}><span className={career.bullet}></span>Implemented frontend optimizations (code-splitting, asset optimization, state efficiency) resulting in ~40% faster page loads across IPO, NCD, and Reports modules</span>
+									</li>
+								</ul>
+								<Badges list={smc} block="stack" fullContainer="fullContainer"/>
+							</div>
+							<div className={career.positionAlt}></div>
+						</div>
+					</article>
+
 					<article className={career.company}>
 						<div className={career.companyContent}>
 							<span className={career.companyHeader}>
-								<h3>West Coast Electronics</h3>
-								<h4>Permanent Full-time</h4>
-								<h4>Jan 2006 - Nov 2011 · 5 yrs 11 mos</h4>
-								<h5>Vancouver, British Columbia, Canada</h5>
+								<h3>Algoworks</h3>
+								<h4>Software Engineer</h4>
+								<h4>Jan 2022 – June 2024</h4>
+								<h5>Noida, India</h5>
 							</span>
-							<p>I was the Electronics Wizard 🧙‍♂️</p>
-							<p>West Coast Electronics was a repair shop that fixed computers, consoles, and cell phones.</p>
+							<p>
+							Algoworks is a software consulting firm building custom web applications for clients across industries. I built frontend modules for a services marketplace and several production web applications from the ground up.
+							</p>
 						</div>
 						<div className={career.companyAlt}></div>
 					</article>
+
+					<article className={career.companyPositions}>
+						<div className={career.position}>
+							<div className={career.positionContent}>
+								<span className={career.positionHeader}>
+									<h3>Key projects at Algoworks</h3>
+								</span>
+								<ul className={career.list}>
+									<li>
+										Built key frontend modules for a marketplace platform enabling service listing, rentals, and purchases
+										<span className={career.subList}><span className={career.bullet}></span>Implemented real-time chat (Twilio), authentication (AWS Cognito), and payments (Stripe) to support end-to-end user transactions</span>
+									</li>
+									<li>
+										Developed multiple production web applications
+										<span className={career.subList}><span className={career.bullet}></span>A voter-candidate management system with admin dashboards and Chart.js visualizations, and a subscription-based social platform supporting post creation and user management using Next.js and React</span>
+									</li>
+								</ul>
+								<Badges list={algoworks} block="stack" fullContainer="fullContainer"/>
+							</div>
+							<div className={career.positionAlt}></div>
+						</div>
+					</article>
+
+					<article className={career.company}>
+						<div className={career.companyContent}>
+							<span className={career.companyHeader}>
+								<h3>IMS Engineering College, Ghaziabad</h3>
+								<h4>Bachelor of Technology – Computer Science</h4>
+								<h4>2018 – 2022</h4>
+								<h5>Ghaziabad, India</h5>
+							</span>
+						</div>
+						<div className={career.companyAlt}></div>
+					</article>
+
 				</section>
 			</Container>
 		</Section>
 	)
 }
 
-const fullStack	= [
+const indmoney	= [
 	{ key: 'javascript', 	name: 'JavaScript', 		type: 'devicon' },
-	{ key: 'nodejs', 		name: 'NodeJS', 			type: 'devicon' },
+	{ key: 'typescript', 	name: 'TypeScript', 		type: 'devicon' },
 	{ key: 'react', 		name: 'React', 				type: 'devicon' },
-	{ key: 'nextjs', 		name: 'NextJS', 			type: 'devicon' },
-	{ key: 'php', 			name: 'PHP', 				type: 'devicon' },
-	{ key: 'wordpress', 	name: 'WordPress', 			type: 'devicon' },
-	{ key: 'woocommerce', 	name: 'WooCommerce', 		type: 'devicon' },
-	{ key: 'html5', 		name: 'HTML5', 				type: 'devicon' },
-	{ key: 'css3', 			name: 'CSS3', 				type: 'devicon' },
-	{ key: 'sass', 			name: 'SASS', 				type: 'devicon' },
+	{ key: 'nextjs', 		name: 'Next.js', 			type: 'devicon' },
+	{ key: 'redux', 		name: 'Redux Toolkit', 	type: 'devicon' },
+	{ key: 'sentry', 		name: 'Sentry', 			type: 'devicon' },
+	{ key: 'wave-square', 	name: 'TradingView Charting Library', type: 'fas' },
 	{ key: 'git', 			name: 'Git', 				type: 'devicon' },
-	{ key: 'mysql', 		name: 'MySQL', 				type: 'devicon' },
-	{ key: 'mongodb', 		name: 'MongoDB', 			type: 'devicon' },
 ]
 
-const stack	= [
+const smc	= [
 	{ key: 'javascript', 	name: 'JavaScript', 		type: 'devicon' },
-	{ key: 'nodejs', 		name: 'NodeJS', 			type: 'devicon' },
 	{ key: 'react', 		name: 'React', 				type: 'devicon' },
-	{ key: 'nextjs', 		name: 'NextJS', 			type: 'devicon' },
-	{ key: 'php', 			name: 'PHP', 				type: 'devicon' },
-	{ key: 'wordpress', 	name: 'WordPress', 			type: 'devicon' },
-	{ key: 'woocommerce', 	name: 'WooCommerce', 		type: 'devicon' },
-	{ key: 'html5', 		name: 'HTML5', 				type: 'devicon' },
-	{ key: 'css3', 			name: 'CSS3', 				type: 'devicon' },
-	{ key: 'sass', 			name: 'SASS', 				type: 'devicon' },
+	{ key: 'nextjs', 		name: 'Next.js', 			type: 'devicon' },
+	{ key: 'redux', 		name: 'Redux Toolkit', 	type: 'devicon' },
 	{ key: 'git', 			name: 'Git', 				type: 'devicon' },
-	{ key: 'mysql', 		name: 'MySQL', 				type: 'devicon' },
-	{ key: 'mongodb', 		name: 'MongoDB', 			type: 'devicon' },
+]
+
+const algoworks	= [
+	{ key: 'javascript', 	name: 'JavaScript', 		type: 'devicon' },
+	{ key: 'react', 		name: 'React', 				type: 'devicon' },
+	{ key: 'nextjs', 		name: 'Next.js', 			type: 'devicon' },
+	{ key: 'amazonwebservices', name: 'AWS Cognito', 	type: 'devicon' },
+	{ key: 'stripe', 		name: 'Stripe', 			type: 'fab' },
+	{ key: 'git', 			name: 'Git', 				type: 'devicon' },
 ]
