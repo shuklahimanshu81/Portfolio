@@ -34,7 +34,7 @@ export default function About() {
 				/>
 				<section className={about.content}>
 					<div className={about.image}>
-						<Image src="/img/back.jpg" layout='fill'/>
+						<Image src="/img/back.jpg" layout='fill' alt="Himanshu Shukla's development workspace" />
 					</div>
 					<div className={about.copy} >
 						<CopyBlock

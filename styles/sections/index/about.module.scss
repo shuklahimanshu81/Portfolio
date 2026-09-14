@@ -61,6 +61,14 @@
 			--padding-right: var(--padding);
 			--padding-bottom: var(--padding);
 
+			transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1), border-color .4s ease, box-shadow .4s ease;
+
+			&:hover {
+				transform: translateY(-.35rem);
+				border-color: var(--secondary);
+				box-shadow: 0 1.5rem 3rem -1.25rem rgba(0,0,0,.35), 0 0 2.5rem -0.75rem var(--secondary);
+			}
+
 			&:not(:last-of-type) {
 				margin-bottom: var(--size-1x);
 			}
@@ -108,17 +116,11 @@
 				border-radius: 2rem;
 			}
 
-			&.technicalSvg {
-				> span {
-					position: relative !important;
-					overflow: visible !important;
-					height: 100% !important;
-					z-index: -1;	
-				}
-				img {    
-					overflow: visible;		
-					filter: brightness(100%);
-				}
+			&.terminalColumn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 1rem;
 			}
 		}
 	}
@@ -139,13 +141,9 @@
 
 			.image {
 				padding: 1rem;
-				&.technicalSvg {
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					height: 140%;
-					z-index: -1;
+
+				&.terminalColumn {
+					padding: 0;
 				}
 			}
 

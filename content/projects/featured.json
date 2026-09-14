@@ -1,46 +1,44 @@
 [
 	{
-		"project": "Marketplace Application",
-		"url": "https://github.com/",
-		"repo": "Private",
-		"descriptionTitle": "A services marketplace built at Algoworks",
-		"description": "connecting people who provide services like renting, grooming, and consulting to the people who need them — with real-time chat, authentication, and payments",
-		"imageOptions": [
-		],
-		"images": [
-			{ "key": "mock-stack",	"hover": "right", 	"h": "1200", "w": "556", "url": "/img/msc-mock_stack/03.png" },
-			{ "key": "mock-stack",	"hover": "right",	"h": "1200", "w": "556", "url": "/img/msc-mock_stack/02.png" },
-			{ "key": "mock-stack",	"hover": "left",	"h": "1200", "w": "556", "url": "/img/msc-mock_stack/01.png" }
+		"project": "INDstocks",
+		"tagline": "Real-time trading terminal — INDmoney",
+		"url": "https://www.indstocks.com",
+		"live": true,
+		"descriptionTitle": "A super-fast trading terminal built for scalpers and options traders.",
+		"description": "I work on the trading terminal's option-chain and charting experience — virtualizing real-time tick streams, shipping custom TradingView indicators, and building the trade screen for US Stocks.",
+		"stats": [
+			{ "value": "~75%", "label": "fewer re-renders on the option chain" },
+			{ "value": "9,000+", "label": "US stocks & ETFs supported" },
+			{ "value": "1-click", "label": "scalping & order execution" }
 		],
 		"stack": [
-			{ "key": "html5",		"name": "HTML5", 		"type": "devicon" },
-			{ "key": "css3",		"name": "CSS3", 		"type": "devicon" },
-			{ "key": "javascript", 	"name": "JavaScript", 	"type": "devicon" },
-			{ "key": "bootstrap",	"name": "Bootstrap", 	"type": "devicon" },
-			{ "key": "react",       "name": "React js", 	"type": "devicon" },
-			{ "key": "redux", 	    "name": "Redux Toolkit", 	"type": "devicon" },
-			{ "key": "git",			"name": "Git(Hub)", 	"type": "devicon" },
-			{ "key": "firebase",		"name": "Firebase", 		"type": "devicon" },
-			{ "key": "stripe",		"name": "Stripe", 	    "type": "fab" },
-			{ "key": "amazonwebservices", "name": "AWS Cognito (Authentication)" , "type": "devicon" }
+			{ "key": "javascript", 	"name": "JavaScript", 		"type": "devicon" },
+			{ "key": "typescript", 	"name": "TypeScript", 		"type": "devicon" },
+			{ "key": "react", 		"name": "React", 			"type": "devicon" },
+			{ "key": "nextjs", 		"name": "Next.js", 			"type": "devicon" },
+			{ "key": "redux", 		"name": "Redux Toolkit", 	"type": "devicon" },
+			{ "key": "wave-square", "name": "TradingView Charting Library", "type": "fas" },
+			{ "key": "sentry", 		"name": "Sentry", 			"type": "devicon" }
 		]
 	},
 	{
-		"project": "Blossom UI",
-		"url": "https://github.com/shuklahimanshu81/Blossom-UI",
-		"repo": "Public",
-		"descriptionTitle": "A HTML component library",
-		"description": "that provides different components (cards, buttons etc.) to be used in your next project",
-		"imageOptions": [
-			{ "key": "size", 		"value": "large" }
-		],
-		"images": [
-			{ "key": "portfolio", "hover": "left", "h": "600", "w": "556",  "url": "/img/project-img.png" }
+		"project": "SMC Easy Invest",
+		"tagline": "Retail investment platform — SMC Global",
+		"url": "https://www.smceasyinvest.com",
+		"live": true,
+		"descriptionTitle": "A full-scale mutual fund investing platform, launched from scratch in 6 months.",
+		"description": "I led frontend ownership end-to-end — mutual fund cart, SIP / lumpsum flows, redemptions, scheme switching — plus the NCD bond platform, delivered solo in 3 days with no design support.",
+		"stats": [
+			{ "value": "₹3,950+ Cr", "label": "AUM managed on the platform" },
+			{ "value": "~40%", "label": "faster page loads across IPO, NCD & Reports" },
+			{ "value": "6 months", "label": "0 to launch, 3-developer team" }
 		],
 		"stack": [
-			{ "key": "html5",		"name": "HTML5", 		"type": "devicon" },
-			{ "key": "css3",		"name": "CSS3", 		"type": "devicon" },
-			{ "key": "git",			"name": "Git(Hub)", 	"type": "devicon" }
+			{ "key": "javascript", 	"name": "JavaScript", 		"type": "devicon" },
+			{ "key": "react", 		"name": "React", 			"type": "devicon" },
+			{ "key": "nextjs", 		"name": "Next.js", 			"type": "devicon" },
+			{ "key": "redux", 		"name": "Redux Toolkit", 	"type": "devicon" },
+			{ "key": "git", 		"name": "Git", 				"type": "devicon" }
 		]
 	}
 ]

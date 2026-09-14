@@ -36,6 +36,7 @@
 
 	.company,
 	.position {
+		position: relative;
 		border: 1px solid var(--primary-dark);
 		border-radius: 1rem;
 		overflow: hidden;
@@ -48,6 +49,30 @@
 		--padding-bottom: var(--padding);
 
 		background: var(--background-dim2);
+
+		transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1), border-color .4s ease, box-shadow .4s ease;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 3px;
+			background: linear-gradient(180deg, var(--neon-1-1) 0%, var(--neon-1-2) 100%);
+			opacity: 0;
+			transition: opacity .4s ease;
+		}
+
+		&:hover {
+			transform: translateY(-.35rem);
+			border-color: var(--secondary);
+			box-shadow: 0 1.5rem 3rem -1.25rem rgba(0,0,0,.35), 0 0 2.5rem -0.75rem var(--secondary);
+
+			&:before {
+				opacity: 1;
+			}
+		}
 	}
 
 	.companyContent {

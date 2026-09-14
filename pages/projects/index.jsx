@@ -3,6 +3,7 @@ import GitRecentProjects from '../../components/sections/projects/recent'
 import FeaturedProjects from '../../components/sections/projects/featured'
 
 import Color  from '../../components/utils/page.colors.util'
+import Seo from '../../components/utils/seo.util'
 
 import settings from '../../content/_settings.json'
 import colors from '../../content/projects/_colors.json'
@@ -11,6 +12,11 @@ import colors from '../../content/projects/_colors.json'
 export default function Projects({ user, repos }) {
 	return (
 		<>
+		<Seo
+			title="Projects"
+			description="Projects by Himanshu Shukla — real-time trading and investment platforms (INDstocks, SMC Easy Invest) plus open-source work on GitHub."
+			path="/projects"
+		/>
 		<Color colors={colors} />
 		<FeaturedProjects />
 		<GitRecentProjects user={user} repos={repos} />
