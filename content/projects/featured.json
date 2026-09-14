@@ -7,9 +7,9 @@
 		"descriptionTitle": "A super-fast trading terminal built for scalpers and options traders.",
 		"description": "I work on the trading terminal's option-chain and charting experience — virtualizing real-time tick streams, shipping custom TradingView indicators, and building the trade screen for US Stocks.",
 		"stats": [
-			{ "value": "~75%", "label": "fewer re-renders on the option chain" },
-			{ "value": "9,000+", "label": "US stocks & ETFs supported" },
-			{ "value": "1-click", "label": "scalping & order execution" }
+			{ "value": "~75%", "label": "Fewer re-renders, option chain" },
+			{ "value": "9,000+", "label": "US stocks & ETFs" },
+			{ "value": "1-click", "label": "Scalping & execution" }
 		],
 		"stack": [
 			{ "key": "javascript", 	"name": "JavaScript", 		"type": "devicon" },
@@ -29,9 +29,9 @@
 		"descriptionTitle": "A full-scale mutual fund investing platform, launched from scratch in 6 months.",
 		"description": "I led frontend ownership end-to-end — mutual fund cart, SIP / lumpsum flows, redemptions, scheme switching — plus the NCD bond platform, delivered solo in 3 days with no design support.",
 		"stats": [
-			{ "value": "₹3,950+ Cr", "label": "AUM managed on the platform" },
-			{ "value": "~40%", "label": "faster page loads across IPO, NCD & Reports" },
-			{ "value": "6 months", "label": "0 to launch, 3-developer team" }
+			{ "value": "₹3,950+ Cr", "label": "AUM on the platform" },
+			{ "value": "~40%", "label": "Faster page loads, IPO/NCD" },
+			{ "value": "6 months", "label": "0 to launch, 3-dev team" }
 		],
 		"stack": [
 			{ "key": "javascript", 	"name": "JavaScript", 		"type": "devicon" },
