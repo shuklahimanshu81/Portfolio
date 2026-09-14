@@ -10,6 +10,7 @@
 	flex-wrap: nowrap;
 	user-select: none;
 	position: relative;
+	overflow: hidden;
 
 	border-radius: 2rem;
 	background-color: var(--background-dim2);
@@ -125,7 +126,8 @@
 .stat {
 	display: flex;
 	flex-direction: column;
-	gap: .15rem;
+	gap: .3rem;
+	max-width: 16rem;
 
 	.statValue {
 		font-family: var(--font-accent);
@@ -139,7 +141,9 @@
 
 	.statLabel {
 		font-size: .8rem;
+		line-height: 1.4;
 		color: var(--primary-dim);
+		text-wrap: balance;
 	}
 }
 
