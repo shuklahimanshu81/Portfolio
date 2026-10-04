@@ -3,6 +3,39 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { MeshDistortMaterial, Sparkles } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
+import scrollState from '../../../lib/scroll-state'
+
+// Waypoints the scene travels between as the whole page scrolls,
+// roughly: hero -> about/technical -> career -> projects/footer.
+const WAYPOINTS = [
+	{ progress: 0,    position: [3.9, 0.1, -1.5], scale: 1 },
+	{ progress: 0.22, position: [2.6, -2.1, -4],  scale: 0.75 },
+	{ progress: 0.5,  position: [-2.8, 1.4, -5.5], scale: 0.6 },
+	{ progress: 0.78, position: [2.2, 2.6, -6],   scale: 0.55 },
+	{ progress: 1,    position: [0, -0.5, -7.5],  scale: 0.45 },
+]
+
+function sampleWaypoints(progress) {
+	for (let i = 0; i < WAYPOINTS.length - 1; i++) {
+		const a = WAYPOINTS[i]
+		const b = WAYPOINTS[i + 1]
+		if (progress >= a.progress && progress <= b.progress) {
+			const span = b.progress - a.progress || 1
+			const t = (progress - a.progress) / span
+			return {
+				position: [
+					a.position[0] + (b.position[0] - a.position[0]) * t,
+					a.position[1] + (b.position[1] - a.position[1]) * t,
+					a.position[2] + (b.position[2] - a.position[2]) * t,
+				],
+				scale: a.scale + (b.scale - a.scale) * t,
+			}
+		}
+	}
+	const last = WAYPOINTS[WAYPOINTS.length - 1]
+	return { position: last.position, scale: last.scale }
+}
+
 /**
  * Full-screen WebGL hero scene: a distorted glowing core with
  * tech-accent nodes orbiting it, set in a soft particle field.
@@ -24,10 +57,10 @@ export default function Scene3D({ lowPower = false }) {
 			<pointLight position={[-5, -3, -4]} intensity={30} color="#38bdf8" />
 
 			<ParallaxRig>
-				<group position={[3.9, 0.1, -1.5]}>
+				<ScrollRig>
 					<Core />
 					<OrbitNodes count={lowPower ? 4 : 7} />
-				</group>
+				</ScrollRig>
 			</ParallaxRig>
 
 			<Sparkles
@@ -83,13 +116,40 @@ function ParallaxRig({ children }) {
 	return <group ref={group}>{children}</group>
 }
 
+/**
+ * Moves the core + orbit nodes group along WAYPOINTS as the page
+ * scrolls, so the scene reads as one continuous object traveling
+ * through the site rather than static hero decoration.
+ */
+function ScrollRig({ children }) {
+	const group = useRef()
+	const current = useRef({ position: [...WAYPOINTS[0].position], scale: WAYPOINTS[0].scale })
+
+	useFrame((state, delta) => {
+		if (!group.current) return
+		const target = sampleWaypoints(scrollState.progress)
+		const ease = Math.min(delta * 1.5, 1)
+
+		for (let i = 0; i < 3; i++) {
+			current.current.position[i] += (target.position[i] - current.current.position[i]) * ease
+		}
+		current.current.scale += (target.scale - current.current.scale) * ease
+
+		group.current.position.set(...current.current.position)
+		group.current.scale.setScalar(current.current.scale)
+	})
+
+	return <group ref={group}>{children}</group>
+}
+
 function Core() {
 	const mesh = useRef()
 
 	useFrame((state, delta) => {
 		if (!mesh.current) return
-		mesh.current.rotation.x += delta * 0.08
-		mesh.current.rotation.y += delta * 0.12
+		const velocityBoost = Math.min(Math.abs(scrollState.velocity) * 0.015, 0.6)
+		mesh.current.rotation.x += delta * (0.08 + velocityBoost)
+		mesh.current.rotation.y += delta * (0.12 + velocityBoost)
 	})
 
 	return (

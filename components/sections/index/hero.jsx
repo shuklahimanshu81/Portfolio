@@ -9,8 +9,6 @@ import space from "../../utils/spacing.util";
 
 import Icon from "../../utils/icon.util";
 
-import HeroBg from "../../blocks/hero.bg/bg-3d";
-
 import hero from "../../../styles/sections/index/hero.module.scss";
 import button from "../../../styles/blocks/button.module.scss";
 
@@ -115,7 +113,6 @@ export default function Hero() {
           </m.div>
         </m.div>
       </Container>
-      <HeroBg />
     </Section>
   );
 }

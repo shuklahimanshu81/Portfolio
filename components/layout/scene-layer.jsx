@@ -1,21 +1,21 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 
-import HeroBgFallback from './bg-color-1'
-import hero from '../../../styles/sections/index/hero.module.scss'
+import css from '../../styles/structure/scene-layer.module.scss'
 
-const Scene3D = dynamic(() => import('./scene3d'), { ssr: false })
+const Scene3D = dynamic(() => import('../blocks/hero.bg/scene3d'), { ssr: false })
 
 /**
- * Full-screen 3D hero takeover. Falls back to the flat gradient
- * background (bg-color-1) when WebGL isn't available or the user
- * has requested reduced motion — this check only runs client-side,
- * so the fallback is also what's rendered during SSR/first paint.
+ * The site's persistent 3D backdrop — mounted once in Layout so it
+ * sits fixed behind every page and reacts to scroll (see
+ * lib/scroll-state.js) instead of being scoped to the hero. Falls
+ * back to rendering nothing (just the flat page background) when
+ * WebGL is unavailable or the user has prefers-reduced-motion set.
  *
- * @returns {jsx} <HeroBg3D />
+ * @returns {jsx|null} <SceneLayer />
  */
-export default function HeroBg3D() {
-	const [mode, setMode] = useState('fallback')
+export default function SceneLayer() {
+	const [mode, setMode] = useState('off')
 
 	useEffect(() => {
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -32,7 +32,7 @@ export default function HeroBg3D() {
 		}
 
 		if (!hasWebGL || reducedMotion) {
-			setMode('fallback')
+			setMode('off')
 			return
 		}
 
@@ -40,10 +40,10 @@ export default function HeroBg3D() {
 		setMode(lowPower ? 'low' : 'full')
 	}, [])
 
-	if (mode === 'fallback') return <HeroBgFallback />
+	if (mode === 'off') return null
 
 	return (
-		<div className={hero.scene3d}>
+		<div className={css.layer}>
 			<Scene3D lowPower={mode === 'low'} />
 		</div>
 	)
