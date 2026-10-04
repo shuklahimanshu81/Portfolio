@@ -22,9 +22,7 @@ const CONTENT = {
 /**
  * The click-triggered overlay that replaces scrolling: opening a
  * nav item mounts the matching section here instead of revealing
- * it further down the page. The 3D scene behind it reacts to the
- * same `active` value (see lib/section-state.js) by flying to a
- * matching vantage point.
+ * it further down the page.
  *
  * @returns {jsx} <SectionPanel />
  */
