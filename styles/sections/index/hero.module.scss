@@ -13,6 +13,40 @@
 
 	> .container {
 		height: fit-content;
+		position: relative;
+		z-index: 1;
+	}
+
+	.scene3d {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+
+		canvas {
+			display: block;
+		}
+	}
+
+	.scrollCue {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: .6rem;
+		margin-top: var(--size-3x);
+
+		span {
+			font-family: var(--font-accent);
+			font-size: .7rem;
+			letter-spacing: .1rem;
+			text-transform: uppercase;
+			color: var(--primary-dim);
+		}
+
+		svg {
+			height: .9rem;
+			color: var(--secondary);
+		}
 	}
 
 	.stats {
@@ -115,6 +149,9 @@
 		}
 		.statValue {
 			font-size: 1.5rem;
+		}
+		.scene3d {
+			opacity: .45;
 		}
 	}
 }

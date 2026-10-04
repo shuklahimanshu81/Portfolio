@@ -9,7 +9,7 @@ import space from "../../utils/spacing.util";
 
 import Icon from "../../utils/icon.util";
 
-import HeroBg from "../../blocks/hero.bg/bg-color-1";
+import HeroBg from "../../blocks/hero.bg/bg-3d";
 
 import hero from "../../../styles/sections/index/hero.module.scss";
 import button from "../../../styles/blocks/button.module.scss";
@@ -99,8 +99,23 @@ export default function Hero() {
             </m.div>
           ))}
         </m.section>
+        <m.div
+          className={hero.scrollCue}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+        >
+          <span>Scroll to explore</span>
+          <m.div
+            className={hero.scrollCueIcon}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Icon icon={["fas", "chevron-down"]} />
+          </m.div>
+        </m.div>
       </Container>
-      <HeroBg theme="bg-color-1" />
+      <HeroBg />
     </Section>
   );
 }
