@@ -1,18 +1,20 @@
 import { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { MeshDistortMaterial, Sparkles } from '@react-three/drei'
+import { Instances, Instance, Line, Sparkles } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
 import scrollState from '../../../lib/scroll-state'
 
-// Waypoints the scene travels between as the whole page scrolls,
-// roughly: hero -> about/technical -> career -> projects/footer.
+// The "market" scene travels through these waypoints as the page
+// scrolls — hero -> about/technical -> career -> projects/footer —
+// so it reads as flying deeper into the cityscape, not a static
+// hero background.
 const WAYPOINTS = [
-	{ progress: 0,    position: [3.9, 0.1, -1.5], scale: 1 },
-	{ progress: 0.22, position: [2.6, -2.1, -4],  scale: 0.75 },
-	{ progress: 0.5,  position: [-2.8, 1.4, -5.5], scale: 0.6 },
-	{ progress: 0.78, position: [2.2, 2.6, -6],   scale: 0.55 },
-	{ progress: 1,    position: [0, -0.5, -7.5],  scale: 0.45 },
+	{ progress: 0,    position: [4.6, -0.6, -4],  scale: 0.9 },
+	{ progress: 0.22, position: [1.2, -3.2, -9],  scale: 0.92 },
+	{ progress: 0.5,  position: [-1.4, -5.4, -17], scale: 0.82 },
+	{ progress: 0.78, position: [1.8, -7.6, -25], scale: 0.72 },
+	{ progress: 1,    position: [0, -9.5, -33],   scale: 0.62 },
 ]
 
 function sampleWaypoints(progress) {
@@ -36,48 +38,63 @@ function sampleWaypoints(progress) {
 	return { position: last.position, scale: last.scale }
 }
 
+// Cheap deterministic hash so the "market data" looks the same
+// every load instead of reshuffling on each render.
+function hashRandom(seed) {
+	const x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453
+	return x - Math.floor(x)
+}
+
+const UP_COLOR = '#2dd4bf'
+const DOWN_COLOR = '#fb7185'
+
 /**
- * Full-screen WebGL hero scene: a distorted glowing core with
- * tech-accent nodes orbiting it, set in a soft particle field.
- * Mounted client-only by hero.bg/index.jsx, which also owns the
+ * Full-page WebGL backdrop: a glowing data-grid floor, a
+ * procedurally generated candlestick skyline (green/red like a
+ * real ticker), and a price line weaving through it. Scroll drives
+ * a flythrough of the whole scene — see WAYPOINTS. Mounted
+ * client-only by layout/scene-layer.jsx, which also owns the
  * WebGL-support / reduced-motion fallback.
  *
- * @param {boolean} lowPower reduce particle/node counts and disable bloom
+ * @param {boolean} lowPower reduce bar/particle counts and disable bloom
  * @returns {jsx} <Scene3D />
  */
 export default function Scene3D({ lowPower = false }) {
+	const cols = lowPower ? 7 : 11
+	const rows = lowPower ? 10 : 16
+
 	return (
 		<Canvas
 			dpr={[1, lowPower ? 1.25 : 1.8]}
 			camera={{ position: [0, 0, 6.5], fov: 45 }}
 			gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
 		>
-			<ambientLight intensity={0.4} />
-			<pointLight position={[4, 3, 5]} intensity={40} color="#5eead4" />
-			<pointLight position={[-5, -3, -4]} intensity={30} color="#38bdf8" />
+			<ambientLight intensity={0.5} />
+			<fog attach="fog" args={['#05070a', 10, 34]} />
 
 			<ParallaxRig>
 				<ScrollRig>
-					<Core />
-					<OrbitNodes count={lowPower ? 4 : 7} />
+					<GridFloor cols={cols} rows={rows} />
+					<Candlesticks cols={cols} rows={rows} />
+					<PriceLine cols={cols} rows={rows} />
 				</ScrollRig>
 			</ParallaxRig>
 
 			<Sparkles
-				count={lowPower ? 60 : 160}
-				scale={[12, 8, 6]}
-				size={1.4}
-				speed={0.25}
-				opacity={0.5}
-				color="#7dd3fc"
+				count={lowPower ? 50 : 140}
+				scale={[16, 10, 30]}
+				size={1.1}
+				speed={0.2}
+				opacity={0.4}
+				color="#bae6fd"
 			/>
 
 			{ !lowPower && (
 				<EffectComposer>
 					<Bloom
-						intensity={0.9}
-						luminanceThreshold={0.15}
-						luminanceSmoothing={0.4}
+						intensity={1.1}
+						luminanceThreshold={0.2}
+						luminanceSmoothing={0.35}
 						mipmapBlur
 					/>
 				</EffectComposer>
@@ -90,7 +107,7 @@ export default function Scene3D({ lowPower = false }) {
  * Wraps the main scene group and gently tilts it toward the
  * pointer position — tracked on window, not the canvas, so the
  * canvas itself can stay pointer-events:none and let clicks
- * through to the hero buttons underneath.
+ * through to the page content underneath.
  */
 function ParallaxRig({ children }) {
 	const group = useRef()
@@ -107,8 +124,8 @@ function ParallaxRig({ children }) {
 
 	useFrame((state, delta) => {
 		if (!group.current) return
-		const targetY = pointer.current.x * 0.35
-		const targetX = pointer.current.y * -0.2
+		const targetY = pointer.current.x * 0.25
+		const targetX = pointer.current.y * -0.08
 		group.current.rotation.y += (targetY - group.current.rotation.y) * Math.min(delta * 2, 1)
 		group.current.rotation.x += (targetX - group.current.rotation.x) * Math.min(delta * 2, 1)
 	})
@@ -117,9 +134,11 @@ function ParallaxRig({ children }) {
 }
 
 /**
- * Moves the core + orbit nodes group along WAYPOINTS as the page
- * scrolls, so the scene reads as one continuous object traveling
- * through the site rather than static hero decoration.
+ * Moves the cityscape along WAYPOINTS as the page scrolls, so it
+ * reads as the camera flying deeper into the market the further
+ * you scroll through the site. Rotation speed also reacts to
+ * scroll velocity — scroll fast and the city spins up a little,
+ * like a burst of trading volume.
  */
 function ScrollRig({ children }) {
 	const group = useRef()
@@ -137,82 +156,73 @@ function ScrollRig({ children }) {
 
 		group.current.position.set(...current.current.position)
 		group.current.scale.setScalar(current.current.scale)
+
+		const velocityBoost = Math.min(Math.abs(scrollState.velocity) * 0.004, 0.25)
+		group.current.rotation.y += delta * velocityBoost
 	})
 
 	return <group ref={group}>{children}</group>
 }
 
-function Core() {
-	const mesh = useRef()
+const SPACING = 1.15
 
-	useFrame((state, delta) => {
-		if (!mesh.current) return
-		const velocityBoost = Math.min(Math.abs(scrollState.velocity) * 0.015, 0.6)
-		mesh.current.rotation.x += delta * (0.08 + velocityBoost)
-		mesh.current.rotation.y += delta * (0.12 + velocityBoost)
-	})
-
+function GridFloor({ cols, rows }) {
+	const width = cols * SPACING + 4
+	const depth = rows * SPACING + 10
 	return (
-		<mesh ref={mesh}>
-			<icosahedronGeometry args={[1.05, 12]} />
-			<MeshDistortMaterial
-				color="#0ea5b7"
-				emissive="#38bdf8"
-				emissiveIntensity={0.7}
-				roughness={0.15}
-				metalness={0.4}
-				distort={0.4}
-				speed={1.4}
-			/>
-		</mesh>
+		<gridHelper
+			args={[Math.max(width, depth), 36, '#2dd4bf', '#0f2a2a']}
+			position={[0, 0, -depth / 2 + SPACING]}
+		/>
 	)
 }
 
-const NODE_COLORS = ['#5eead4', '#38bdf8', '#a78bfa', '#22d3ee', '#6ee7b7', '#f472b6', '#facc15']
-
-function OrbitNodes({ count }) {
-	const nodes = useMemo(() => {
-		return Array.from({ length: count }, (_, i) => ({
-			radius: 1.7 + (i % 3) * 0.3,
-			speed: 0.15 + (i % 4) * 0.07,
-			offset: (i / count) * Math.PI * 2,
-			tilt: (i % 2 === 0 ? 1 : -1) * (0.3 + (i % 3) * 0.15),
-			size: 0.08 + (i % 3) * 0.03,
-			color: NODE_COLORS[i % NODE_COLORS.length],
-		}))
-	}, [count])
+function Candlesticks({ cols, rows }) {
+	const bars = useMemo(() => {
+		const arr = []
+		for (let r = 0; r < rows; r++) {
+			let prevHeight = 1
+			for (let c = 0; c < cols; c++) {
+				const seed = r * 97 + c * 13
+				const n = hashRandom(seed)
+				const spike = hashRandom(seed + 500) > 0.9 ? hashRandom(seed + 900) * 2.2 : 0
+				const height = 0.35 + n * 2 + spike
+				const up = height >= prevHeight
+				prevHeight = height
+				arr.push({
+					position: [(c - (cols - 1) / 2) * SPACING, height / 2, -r * SPACING],
+					height,
+					color: up ? UP_COLOR : DOWN_COLOR,
+				})
+			}
+		}
+		return arr
+	}, [cols, rows])
 
 	return (
-		<>
-			{ nodes.map((n, i) => (
-				<OrbitNode key={i} {...n} />
+		<Instances limit={bars.length} range={bars.length}>
+			<boxGeometry args={[0.46, 1, 0.46]} />
+			<meshBasicMaterial toneMapped={false} />
+			{ bars.map((b, i) => (
+				<Instance key={i} position={b.position} scale={[1, b.height, 1]} color={b.color} />
 			)) }
-		</>
+		</Instances>
 	)
 }
 
-function OrbitNode({ radius, speed, offset, tilt, size, color }) {
-	const ref = useRef()
+function PriceLine({ cols, rows }) {
+	const points = useMemo(() => {
+		const pts = []
+		const steps = 48
+		for (let i = 0; i <= steps; i++) {
+			const t = i / steps
+			const x = Math.sin(t * 6) * cols * 0.18
+			const y = 2.4 + Math.sin(t * 9) * 0.5 + Math.sin(t * 3.3) * 0.9
+			const z = -t * (rows - 1) * SPACING
+			pts.push([x, y, z])
+		}
+		return pts
+	}, [cols, rows])
 
-	useFrame((state) => {
-		if (!ref.current) return
-		const t = state.clock.elapsedTime * speed + offset
-		ref.current.position.set(
-			Math.cos(t) * radius,
-			Math.sin(t * 0.6) * radius * tilt,
-			Math.sin(t) * radius
-		)
-	})
-
-	return (
-		<mesh ref={ref}>
-			<sphereGeometry args={[size, 16, 16]} />
-			<meshStandardMaterial
-				color={color}
-				emissive={color}
-				emissiveIntensity={1.6}
-				toneMapped={false}
-			/>
-		</mesh>
-	)
+	return <Line points={points} color="#7dd3fc" lineWidth={2} toneMapped={false} />
 }
