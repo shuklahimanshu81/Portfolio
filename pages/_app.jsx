@@ -7,6 +7,7 @@ import SetGridGap from '../components/utils/set.grid.util'
 
 // Structure
 import Layout from '../components/layout/layout'
+import { SectionProvider } from '../components/utils/section-context'
 
 // CSS reset (https://github.com/elad2412/the-new-css-reset.git)
 import "../node_modules/the-new-css-reset/css/reset.css"
@@ -36,11 +37,13 @@ export default function MyApp({ Component, pageProps }) {
 	return (
 		<>
 		<LazyMotion features={domAnimation}>
-			<Layout>
-				<Component {...pageProps} />
-				<SetGridGap />
-				<Analytics />
-			</Layout>
+			<SectionProvider>
+				<Layout>
+					<Component {...pageProps} />
+					<SetGridGap />
+					<Analytics />
+				</Layout>
+			</SectionProvider>
 		</LazyMotion>
 		</>
 	)

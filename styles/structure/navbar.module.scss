@@ -50,16 +50,28 @@
 		backdrop-filter: blur(10px);
 		border-radius: 1rem;
 
-		a {
+		a,
+		.navItem {
 			font-family: var(--font-accent);
 			font-weight: 700;
 			color: var(--primary);
+			cursor: pointer;
 
 			&:hover {
 				color: var(--primary-bright);
 			}
 		}
-		
+
+		.navItem {
+			background: none;
+			border: none;
+			padding: 0;
+
+			&[data-active="true"] {
+				color: var(--secondary);
+			}
+		}
+
 		&:after {
 			content: '';
 			position: absolute;

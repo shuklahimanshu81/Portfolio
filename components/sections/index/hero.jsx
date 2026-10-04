@@ -103,14 +103,14 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
         >
-          <span>Scroll to explore</span>
           <m.div
             className={hero.scrollCueIcon}
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, -4, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Icon icon={["fas", "chevron-down"]} />
+            <Icon icon={["fas", "arrow-pointer"]} />
           </m.div>
+          <span>Click a section above to explore</span>
         </m.div>
       </Container>
     </Section>

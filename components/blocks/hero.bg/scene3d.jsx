@@ -3,39 +3,21 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Instances, Instance, Line, Sparkles } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
-import scrollState from '../../../lib/scroll-state'
+import sectionState from '../../../lib/section-state'
 
-// The "market" scene travels through these waypoints as the page
-// scrolls — hero -> about/technical -> career -> projects/footer —
-// so it reads as flying deeper into the cityscape, not a static
-// hero background.
-const WAYPOINTS = [
-	{ progress: 0,    position: [4.6, -0.6, -4],  scale: 0.9 },
-	{ progress: 0.22, position: [1.2, -3.2, -9],  scale: 0.92 },
-	{ progress: 0.5,  position: [-1.4, -5.4, -17], scale: 0.82 },
-	{ progress: 0.78, position: [1.8, -7.6, -25], scale: 0.72 },
-	{ progress: 1,    position: [0, -9.5, -33],   scale: 0.62 },
-]
+// A distinct vantage point over the cityscape for the home view and
+// for each clicked section — the scene flies between these instead
+// of reacting to scroll, since nothing on the page scrolls anymore.
+const SECTION_VIEWS = {
+	home:      { position: [4.6, -0.6, -4],   scale: 0.9 },
+	about:     { position: [1.2, -3.2, -9],   scale: 0.92 },
+	technical: { position: [-1.4, -5.4, -17], scale: 0.82 },
+	career:    { position: [1.8, -7.6, -25],  scale: 0.72 },
+	projects:  { position: [0, -9.5, -33],    scale: 0.62 },
+}
 
-function sampleWaypoints(progress) {
-	for (let i = 0; i < WAYPOINTS.length - 1; i++) {
-		const a = WAYPOINTS[i]
-		const b = WAYPOINTS[i + 1]
-		if (progress >= a.progress && progress <= b.progress) {
-			const span = b.progress - a.progress || 1
-			const t = (progress - a.progress) / span
-			return {
-				position: [
-					a.position[0] + (b.position[0] - a.position[0]) * t,
-					a.position[1] + (b.position[1] - a.position[1]) * t,
-					a.position[2] + (b.position[2] - a.position[2]) * t,
-				],
-				scale: a.scale + (b.scale - a.scale) * t,
-			}
-		}
-	}
-	const last = WAYPOINTS[WAYPOINTS.length - 1]
-	return { position: last.position, scale: last.scale }
+function currentView() {
+	return SECTION_VIEWS[sectionState.active] || SECTION_VIEWS.home
 }
 
 // Cheap deterministic hash so the "market data" looks the same
@@ -51,10 +33,10 @@ const DOWN_COLOR = '#fb7185'
 /**
  * Full-page WebGL backdrop: a glowing data-grid floor, a
  * procedurally generated candlestick skyline (green/red like a
- * real ticker), and a price line weaving through it. Scroll drives
- * a flythrough of the whole scene — see WAYPOINTS. Mounted
- * client-only by layout/scene-layer.jsx, which also owns the
- * WebGL-support / reduced-motion fallback.
+ * real ticker), and a price line weaving through it. Clicking a nav
+ * item flies the scene to that section's vantage point — see
+ * SECTION_VIEWS. Mounted client-only by layout/scene-layer.jsx,
+ * which also owns the WebGL-support / reduced-motion fallback.
  *
  * @param {boolean} lowPower reduce bar/particle counts and disable bloom
  * @returns {jsx} <Scene3D />
@@ -73,11 +55,11 @@ export default function Scene3D({ lowPower = false }) {
 			<fog attach="fog" args={['#05070a', 10, 34]} />
 
 			<ParallaxRig>
-				<ScrollRig>
+				<SectionRig>
 					<GridFloor cols={cols} rows={rows} />
 					<Candlesticks cols={cols} rows={rows} />
 					<PriceLine cols={cols} rows={rows} />
-				</ScrollRig>
+				</SectionRig>
 			</ParallaxRig>
 
 			<Sparkles
@@ -134,19 +116,33 @@ function ParallaxRig({ children }) {
 }
 
 /**
- * Moves the cityscape along WAYPOINTS as the page scrolls, so it
- * reads as the camera flying deeper into the market the further
- * you scroll through the site. Rotation speed also reacts to
- * scroll velocity — scroll fast and the city spins up a little,
- * like a burst of trading volume.
+ * Flies the cityscape to the active section's vantage point
+ * whenever it changes (see lib/section-state.js, written to by
+ * SectionContext on every nav click) — a smooth camera move rather
+ * than a scroll-linked one, since the page itself no longer
+ * scrolls. A brief rotational flourish plays on every change, like
+ * a burst of trading volume as a new section comes into view.
  */
-function ScrollRig({ children }) {
+function SectionRig({ children }) {
 	const group = useRef()
-	const current = useRef({ position: [...WAYPOINTS[0].position], scale: WAYPOINTS[0].scale })
+	const home = SECTION_VIEWS.home
+	const current = useRef({ position: [...home.position], scale: home.scale })
+	const lastActive = useRef(sectionState.active)
+	// Damped spring (kicked on every section change, always settles
+	// back to 0) rather than an accumulating rotation — otherwise
+	// each click would permanently drift the city a little further.
+	const spinOffset = useRef(0)
+	const spinVelocity = useRef(0)
 
 	useFrame((state, delta) => {
 		if (!group.current) return
-		const target = sampleWaypoints(scrollState.progress)
+
+		if (sectionState.active !== lastActive.current) {
+			lastActive.current = sectionState.active
+			spinVelocity.current += 1.4
+		}
+
+		const target = currentView()
 		const ease = Math.min(delta * 1.5, 1)
 
 		for (let i = 0; i < 3; i++) {
@@ -157,8 +153,12 @@ function ScrollRig({ children }) {
 		group.current.position.set(...current.current.position)
 		group.current.scale.setScalar(current.current.scale)
 
-		const velocityBoost = Math.min(Math.abs(scrollState.velocity) * 0.004, 0.25)
-		group.current.rotation.y += delta * velocityBoost
+		const stiffness = 10
+		const damping = 9
+		const accel = -stiffness * spinOffset.current - damping * spinVelocity.current
+		spinVelocity.current += accel * delta
+		spinOffset.current += spinVelocity.current * delta
+		group.current.rotation.y = spinOffset.current
 	})
 
 	return <group ref={group}>{children}</group>

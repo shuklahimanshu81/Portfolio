@@ -1,11 +1,21 @@
 [
 	{
-		"url": "/",
-		"title": "About Me"
+		"key": "about",
+		"title": "About"
 	},
-	
+
 	{
-		"url": "/projects",
+		"key": "technical",
+		"title": "Technical"
+	},
+
+	{
+		"key": "career",
+		"title": "Career"
+	},
+
+	{
+		"key": "projects",
 		"title": "Projects"
 	}
 ]

@@ -1,0 +1,60 @@
+@import '../scss/_mixins';
+
+.panel {
+	position: fixed;
+	inset: 0;
+	z-index: 5;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	background: color-mix(in srgb, var(--background) 72%, transparent);
+	backdrop-filter: blur(18px);
+}
+
+.scroll {
+	flex: 1;
+	overflow-y: auto;
+	padding-top: 6rem;
+
+	-webkit-overflow-scrolling: touch;
+}
+
+.close {
+	position: fixed;
+	top: 6rem;
+	right: 1.5rem;
+	z-index: 6;
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	background: var(--background-dim2);
+	border: 1px solid var(--primary-dark);
+	color: var(--primary);
+	font-family: var(--font-accent);
+	font-size: .8rem;
+	font-weight: 600;
+	padding: .6rem 1.1rem;
+	border-radius: 99rem;
+	cursor: pointer;
+	transition: color .2s ease, border-color .2s ease, transform .2s ease;
+
+	svg {
+		height: .8rem;
+	}
+
+	&:hover {
+		color: var(--primary-bright);
+		border-color: var(--secondary);
+		transform: translateY(-1px);
+	}
+}
+
+@include media($max: $mobile) {
+	.scroll {
+		padding-top: 5rem;
+	}
+	.close {
+		top: 5.5rem;
+		right: 1rem;
+	}
+}
