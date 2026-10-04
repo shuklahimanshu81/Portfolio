@@ -3,6 +3,7 @@ import { useCallback } from 'react'
 import {useRouter} from 'next/router';
 import Link from 'next/link'
 import ThemeMode from '../utils/theme.util'
+import { useSection } from '../utils/section-context'
 
 import settings from '../../content/_settings.json'
 import content  from '../../content/navbar.json'
@@ -11,8 +12,14 @@ import css from '../../styles/structure/navbar.module.scss'
 export default function Navbar() {
 
 	const router = useRouter()
+	const { active, openSection, closeSection } = useSection()
 
 	const [ menuState, menuToggle ] = useState()
+
+	const closeSectionIfHome = () => {
+		closeSection()
+		menuToggle(false)
+	}
 
 	useEffect( () => {
 		menuToggle(false)
@@ -134,8 +141,10 @@ export default function Navbar() {
 		<nav id="Navbar" className={css.container}>
 			<ul className={css.menu}>
 				<li className={css.menuHeader}>
-					<Link className={css.logo} href="/"  >
-						{settings.name}
+					<Link href="/" legacyBehavior passHref>
+						<a className={css.logo} onClick={closeSectionIfHome}>
+							{settings.name}
+						</a>
 					</Link>
 					<button onClick={toggleMenu} className={css.mobileToggle} data-open={menuState}>
 						<div>
@@ -147,13 +156,19 @@ export default function Navbar() {
 				<li data-open={menuState} className={css.menuContent}>
 					<ul>
 						{
-						content.map( ({ url, title }, index) => {
+						content.map( ({ key, title }, index) => {
 							return (
 								<li key={index}>
-									<Link href={url}>{title}</Link>
+									<button
+										className={css.navItem}
+										data-active={active === key}
+										onClick={() => { openSection(key); menuToggle(false) }}
+									>
+										{title}
+									</button>
 								</li>
 							)
-						})	
+						})
 						}
 						<li>
 							<ThemeMode />
