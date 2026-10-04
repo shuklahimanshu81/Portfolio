@@ -17,17 +17,6 @@
 		z-index: 1;
 	}
 
-	.scene3d {
-		position: absolute;
-		inset: 0;
-		z-index: -1;
-		pointer-events: none;
-
-		canvas {
-			display: block;
-		}
-	}
-
 	.scrollCue {
 		display: flex;
 		flex-direction: row;
@@ -149,9 +138,6 @@
 		}
 		.statValue {
 			font-size: 1.5rem;
-		}
-		.scene3d {
-			opacity: .45;
 		}
 	}
 }
