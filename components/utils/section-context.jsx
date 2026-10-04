@@ -1,8 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-import sectionState from '../../lib/section-state'
-
 const SECTIONS = ['about', 'technical', 'career', 'projects']
 
 const Ctx = createContext({
@@ -13,9 +11,7 @@ const Ctx = createContext({
 
 /**
  * Tracks which homepage section panel (if any) is open. Mounted at
- * the app level so both the Navbar and the homepage can read/set
- * it. Mirrors the value into lib/section-state.js so the R3F scene
- * can react to it without needing React context inside the canvas.
+ * the app level so both the Navbar and the homepage can read/set it.
  *
  * @returns {jsx} <SectionProvider>
  */
@@ -29,10 +25,6 @@ export function SectionProvider({ children }) {
 		const fromHash = window.location.hash.replace('#', '')
 		if (SECTIONS.includes(fromHash)) setActive(fromHash)
 	}, [])
-
-	useEffect(() => {
-		sectionState.active = active
-	}, [active])
 
 	const openSection = useCallback((key) => {
 		if (!SECTIONS.includes(key)) return

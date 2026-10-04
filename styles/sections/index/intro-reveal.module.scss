@@ -1,0 +1,265 @@
+@import '../../scss/_mixins';
+
+// A one-shot, scripted beat that covers the real hero on first visit:
+// a parody of a terrible old website, glitched apart, rebuilt live in
+// a fake terminal log, then dismissed to reveal the real page beneath.
+// Deliberately NOT theme-aware for the ugly/terminal phases — that's
+// the joke, and the drama — only the skip control borrows the site's
+// own tokens so it still feels native.
+
+.stage {
+	position: fixed;
+	inset: 0;
+	z-index: 20;
+}
+
+// ---------- the "before": parody of a terrible old website ----------
+.ugly {
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(circle at 20% 10%, #d7f7ff 0%, transparent 40%),
+		radial-gradient(circle at 80% 90%, #ffe9c7 0%, transparent 40%),
+		#f2efe3;
+	color: #1a1a1a;
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+	overflow-y: auto;
+}
+
+.uglyWrap {
+	max-width: 52rem;
+	margin: 0 auto;
+	padding: 3.5rem 1.2rem 5rem;
+	text-align: center;
+}
+
+.rainbow {
+	font-size: clamp(1.5rem, 6vw, 2.5rem);
+	margin: .6rem 0 .1rem;
+	background: linear-gradient(90deg, red, orange, #d4d400, green, #1e90ff, violet, red);
+	background-size: 220% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	animation: rainbow 2.4s linear infinite;
+}
+@keyframes rainbow { to { background-position: 220% 0; } }
+
+.uglySub {
+	font-size: .9rem;
+	color: #555;
+	margin: 0 0 .9rem;
+}
+
+.marquee {
+	background: #000;
+	color: #39ff14;
+	font-family: var(--font-accent);
+	padding: .4rem 0;
+	overflow: hidden;
+	white-space: nowrap;
+	margin: .8rem auto 1.1rem;
+	border: 2px solid #666;
+	font-size: .75rem;
+}
+.marqueeTrack {
+	display: inline-block;
+	animation: marquee 9s linear infinite;
+	span { padding: 0 1.2rem; }
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.navrow {
+	display: flex;
+	justify-content: center;
+	gap: .4rem;
+	flex-wrap: wrap;
+	margin: 0 0 1rem;
+}
+.oldBtn {
+	background: #c7c7c7;
+	border: 3px outset #e8e8e8;
+	color: #000;
+	font-weight: bold;
+	padding: .4rem .8rem;
+	font-size: .75rem;
+}
+
+.photo {
+	width: min(80%, 20rem);
+	aspect-ratio: 4/3;
+	margin: 0 auto 1rem;
+	background: #bbb;
+	border: 3px dashed #888;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #555;
+	font-size: .72rem;
+	font-family: var(--font-accent);
+}
+
+.badgebar {
+	display: flex;
+	justify-content: center;
+	gap: .6rem;
+	align-items: center;
+	margin: .6rem 0 1.3rem;
+	flex-wrap: wrap;
+}
+.blink { animation: blink 1s steps(1) infinite; color: #c00; font-weight: bold; }
+@keyframes blink { 50% { opacity: 0; } }
+.spin { display: inline-block; animation: spin 1.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.counter {
+	background: #000;
+	color: #39ff14;
+	font-family: var(--font-accent);
+	font-size: .75rem;
+	padding: .25rem .5rem;
+	border: 2px inset #555;
+	letter-spacing: .08em;
+}
+
+.fixBtn {
+	background: #39ff14;
+	border: 4px outset #ff00ff;
+	color: #b00000;
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+	font-weight: bold;
+	font-size: 1.05rem;
+	padding: .9rem 1.6rem;
+	cursor: pointer;
+	box-shadow: 4px 4px 0 #000;
+	margin-top: .4rem;
+	animation: pulse 1s ease-in-out infinite;
+
+	&:active { transform: scale(.97); }
+}
+@keyframes pulse { 50% { transform: scale(1.05); } }
+
+.uglyFooter {
+	font-size: .7rem;
+	color: #777;
+	margin-top: 1.5rem;
+}
+
+@keyframes glitchOut {
+	0%   { transform: translate(0,0); filter: none; }
+	12%  { transform: translate(-8px,2px); filter: hue-rotate(25deg) saturate(3); }
+	26%  { transform: translate(7px,-4px); filter: hue-rotate(-35deg) saturate(3); }
+	40%  { transform: translate(-5px,5px) scaleX(1.02); }
+	55%  { transform: translate(8px,-3px); filter: contrast(2.2) brightness(1.5); }
+	70%  { transform: translate(-4px,-4px); }
+	85%  { transform: translate(5px,3px); filter: contrast(2.6) brightness(1.8); }
+	100% { opacity: 0; transform: scale(1.04); filter: contrast(3) brightness(2.1); }
+}
+.glitchOut { animation: glitchOut .32s steps(7) forwards; pointer-events: none; }
+
+// ---------- static flash ----------
+.staticLayer {
+	position: absolute;
+	inset: 0;
+	background: #000;
+
+	canvas {
+		width: 100%;
+		height: 100%;
+		image-rendering: pixelated;
+		opacity: .9;
+	}
+}
+
+// ---------- terminal rebuild montage ----------
+.terminal {
+	position: absolute;
+	inset: 0;
+	background: #05070a;
+	color: #8ef0b0;
+	font-family: var(--font-accent);
+	padding: 3rem 0 2rem;
+	display: flex;
+	flex-direction: column;
+}
+.termWrap {
+	max-width: 46rem;
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 1.5rem;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.termHead {
+	font-size: .7rem;
+	color: #5b6a63;
+	letter-spacing: .05em;
+	margin-bottom: .8rem;
+	text-transform: uppercase;
+}
+.log {
+	flex: 1;
+	overflow: hidden;
+	font-size: .8rem;
+	line-height: 1.65;
+
+	div {
+		opacity: 0;
+		animation: logIn .25s ease forwards;
+	}
+	.w { color: #ffd166; }
+	.c { color: #5fb3ff; }
+	.ok { color: #8ef0b0; }
+}
+@keyframes logIn { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+
+.progressRow {
+	display: flex;
+	align-items: center;
+	gap: .7rem;
+	margin-top: 1rem;
+	font-size: .76rem;
+	color: #9fb8ab;
+}
+.progressTrack {
+	flex: 1;
+	height: .5rem;
+	border: 1px solid #244235;
+	background: #0b140e;
+	border-radius: 99rem;
+	overflow: hidden;
+}
+.progressFill {
+	height: 100%;
+	background: linear-gradient(90deg, #3dd68c, #8ef0b0);
+	transition: width .15s ease;
+}
+
+// ---------- skip control — the one piece that borrows the real theme ----------
+.skip {
+	position: fixed;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	z-index: 2;
+	font-family: var(--font-accent);
+	font-size: .68rem;
+	letter-spacing: .04em;
+	color: var(--primary-dim);
+	background: var(--background-dim2);
+	border: 1px solid var(--primary-dark);
+	border-radius: 99rem;
+	padding: .45rem .9rem;
+	cursor: pointer;
+	transition: color .2s ease, border-color .2s ease;
+
+	&:hover {
+		color: var(--secondary);
+		border-color: var(--secondary);
+	}
+}
+
+@include media($max: $mobile) {
+	.rainbow { font-size: 1.4rem; }
+	.fixBtn { font-size: .9rem; padding: .75rem 1.2rem; }
+	.marquee { font-size: .68rem; }
+}
