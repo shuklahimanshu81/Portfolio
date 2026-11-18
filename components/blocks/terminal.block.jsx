@@ -19,7 +19,7 @@ export default function Terminal() {
 				<span className={terminal.fileName}>useOptionChain.ts</span>
 			</div>
 			<pre className={terminal.code}>
-				<Line n={1}><C>{'// ~75% fewer renders under load'}</C></Line>
+				<Line n={1}><C>{'// opens grew 10x under load: 18.8K -> 198K/mo'}</C></Line>
 				<Line n={2}><K>export function</K> <F>useOptionChain</F>(<P>symbol</P>: <T>string</T>) {'{'}</Line>
 				<Line n={3}>  <K>const</K> [rows, setRows] = useState&lt;<T>Row</T>[]&gt;([]);</Line>
 				<Line n={4}></Line>

@@ -9,6 +9,7 @@ const DEFAULT_KEYWORDS = [
 	'Himanshu Shukla SDE',
 	'Himanshu Shukla INDmoney',
 	'Himanshu Shukla portfolio',
+	'Frontend Engineer',
 	'Frontend Developer',
 	'React Developer',
 	'Next.js Developer',
@@ -37,7 +38,7 @@ export default function Seo({
 	jsonLd,
 }) {
 	const url = `${SITE_URL}${path}`
-	const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Frontend Developer (SDE-2)`
+	const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Frontend Engineer (SDE-2)`
 	const allKeywords = [...new Set([...DEFAULT_KEYWORDS, ...keywords])].join(', ')
 	const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
 
@@ -82,8 +83,8 @@ export const personJsonLd = {
 	alternateName: 'Himanshu Shukla FE',
 	url: SITE_URL,
 	image: `${SITE_URL}/img/preview.png`,
-	jobTitle: 'Frontend Developer (SDE-2)',
-	description: 'Frontend Developer (SDE-2) with 4+ years of experience building high-performance, scalable web applications with React, Next.js, and Redux Toolkit.',
+	jobTitle: 'Frontend Engineer (SDE-2)',
+	description: 'Frontend Engineer (SDE-2) with 4+ years building high-performance, real-time fintech applications with React, TypeScript, Next.js, and Redux Toolkit. Shipped 384 pull requests and ~28 custom TradingView indicators at scale.',
 	email: 'mailto:himanshu2361999@gmail.com',
 	worksFor: {
 		'@type': 'Organization',
