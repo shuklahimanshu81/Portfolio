@@ -2,7 +2,6 @@ import { AnimatePresence, m } from 'framer-motion'
 
 import Hero 		from '../components/sections/index/hero'
 import SectionPanel	from '../components/sections/index/section-panel'
-import IntroReveal	from '../components/sections/index/intro-reveal'
 
 import Color 		from '../components/utils/page.colors.util'
 import Seo, { personJsonLd } from '../components/utils/seo.util'
@@ -37,7 +36,6 @@ export default function HomePage() {
 				) }
 			</AnimatePresence>
 			<SectionPanel />
-			<IntroReveal />
 		</>
 	);
 }

@@ -60,7 +60,6 @@ export default function Footer() {
 					</ul>
 				</section>
 			</Container>
-			<canvas id="gradient-canvas" className={''} data-transition-in ></canvas>
 		</footer>
 	)
 }

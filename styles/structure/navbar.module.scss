@@ -41,14 +41,12 @@
 	}
 
 	.menu {
-		display: flex;	
+		display: flex;
 		justify-content: space-between;
 		max-width: var(--reading-width);
 		margin: 1rem auto;
-		border-radius: 1rem;
+		border-radius: 1.5rem;
 		position: relative;
-		backdrop-filter: blur(10px);
-		border-radius: 1rem;
 
 		a,
 		.navItem {
@@ -80,9 +78,8 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background: var(--primary-dark);
-			opacity: 50%;
-			border-radius: 1rem;
+			border-radius: inherit;
+			@include glass;
 		}
 	}
 

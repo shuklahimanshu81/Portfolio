@@ -1,11 +1,12 @@
+@import 'styles/scss/mixins';
+
 .window {
 	position: relative;
 	height: fit-content;
 	width: 100%;
-	border-radius: 1rem;
+	border-radius: 1.25rem;
 	overflow: hidden;
-	border: 1px solid var(--primary-dark);
-	background: var(--background-dim2);
+	@include glass(true);
 	box-shadow: 0 2rem 4rem -1.5rem rgba(0,0,0,.5), 0 0 4rem -1rem var(--secondary);
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -18,8 +19,8 @@
 	align-items: center;
 	gap: .75rem;
 	padding: .75rem 1rem;
-	background: var(--background-dim);
-	border-bottom: 1px solid var(--primary-dark);
+	background: var(--glass-highlight);
+	border-bottom: 1px solid var(--glass-border);
 }
 
 .dots {
