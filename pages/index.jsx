@@ -18,8 +18,8 @@ export default function HomePage() {
 	return (
 		<>
 			<Seo
-				title="Frontend Developer (SDE-2)"
-				description="Himanshu Shukla — Frontend Developer (SDE-2) at INDmoney with 4+ years building high-performance React, Next.js, and Redux Toolkit applications for fintech platforms including INDstocks and SMC Easy Invest."
+				title="Frontend Engineer (SDE-2)"
+				description="Himanshu Shukla — Frontend Engineer (SDE-2) at INDmoney with 4+ years building high-performance React, TypeScript, Next.js, and Redux Toolkit applications for fintech platforms including INDstocks and SMC Easy Invest. 384 PRs shipped, ~28 custom TradingView indicators."
 				path="/"
 				jsonLd={personJsonLd}
 			/>

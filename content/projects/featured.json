@@ -5,11 +5,11 @@
 		"url": "https://www.indstocks.com",
 		"live": true,
 		"descriptionTitle": "A super-fast trading terminal built for scalpers and options traders.",
-		"description": "I work on the trading terminal's option-chain and charting experience — virtualizing real-time tick streams, shipping custom TradingView indicators, and building the trade screen for US Stocks.",
+		"description": "I work on the trading terminal's option-chain and charting experience — virtualizing real-time tick streams, shipping ~28 custom TradingView indicators through Creator Studio, and building the trade screen for US Stocks.",
 		"stats": [
-			{ "value": "~75%", "label": "Fewer re-renders, option chain" },
-			{ "value": "9,000+", "label": "US stocks & ETFs" },
-			{ "value": "1-click", "label": "Scalping & execution" }
+			{ "value": "28", "label": "Custom TradingView indicators shipped" },
+			{ "value": "10×", "label": "Option-chain growth, Jan–Oct" },
+			{ "value": "9,000+", "label": "US stocks & ETFs" }
 		],
 		"stack": [
 			{ "key": "javascript", 	"name": "JavaScript", 		"type": "devicon" },

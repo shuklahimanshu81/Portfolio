@@ -30,7 +30,7 @@ export default function About() {
 				<SectionTitle
 					title="About Me"
 					preTitle="Synopsis"
-					subTitle="Frontend Developer (SDE-2) with 4+ years of experience building high-performance, scalable web applications."
+					subTitle="Frontend Engineer (SDE-2) with 4+ years building high-performance, real-time fintech applications — 384 PRs shipped across three production repositories."
 				/>
 				<section className={about.content}>
 					<div className={about.image}>
@@ -42,7 +42,7 @@ export default function About() {
 							containerClass={about.container}
 							iconClass={about.icon}
 							icon={[ 'fas', 'bolt' ]}
-							copy="I own frontend modules end-to-end — from architecture and performance budgets down to the pixel-level UX details. At INDmoney I build the web experience for a social trading platform and optimize real-time option-chain streaming; at SMC Global I led the frontend for a retail investment platform built from scratch in 6 months. I care about clean code, measurable performance wins, and interfaces that are accessible by default. Outside of work, I enjoy running and cricket."
+							copy="I own frontend modules end-to-end — from architecture and performance budgets down to the pixel-level UX details. At INDmoney I build the web experience for INDsocial and the trading terminal, where option chain opens have grown 10× under my work on real-time streaming; at SMC Global I led the frontend for a retail investment platform built from scratch in 6 months. I care about clean code, measurable performance wins, and interfaces that are accessible by default. Outside of work, I enjoy running and cricket."
 						/>
 						<BadgesBlock
 							title="What I focus on"
@@ -51,7 +51,7 @@ export default function About() {
 							fullContainer="fullContainer"
 							block="methods"
 							icon="fingerprint"
-							copy="From cutting rendered tick updates by ~75% through virtualization to championing WCAG-aligned UI standards adopted team-wide, I care about the details that make software fast, reliable, and usable by everyone."
+							copy="From growing option chain usage 10× through virtualization to championing WCAG-aligned UI standards adopted team-wide, I care about the details that make software fast, reliable, and usable by everyone."
 							//invertedColor="invertedColor"
 							headerIcon={`${about.icon}`}
 						/>

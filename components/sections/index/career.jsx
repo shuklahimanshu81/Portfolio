@@ -39,7 +39,7 @@ export default function Career() {
 								<h5>Gurugram, India</h5>
 							</span>
 							<p>
-							INDmoney is a wealth-tech platform for investing, trading, and managing money in one place. I work on INDsocial and the trading terminal — building the interfaces traders use to track positions, read charts, and place orders in real time.
+							INDmoney is a wealth-tech platform for investing, trading, and managing money in one place. I work on INDsocial and the trading terminal — building the interfaces traders use to track positions, read charts, and place orders in real time. 384 pull requests shipped and counting, across three production repositories serving 20,000+ weekly chart users.
 							</p>
 						</div>
 						<div className={career.companyAlt}></div>
@@ -53,32 +53,41 @@ export default function Career() {
 								</span>
 								<ul className={career.list}>
 									<li>
-										Built the web experience for INDsocial, a social platform where users share trades, live positions, and portfolios
-										<span className={career.subList}><span className={career.bullet}></span>Implemented profile and post views with seamless deep-linking into the native app for transactional flows</span>
+										Built and shipped ~28 custom TradingView indicators into the shared indicators-lab package, wired across the desktop terminal and mobile app charts
+										<span className={career.metric}>28 indicators · 2,875 weekly users on the top one</span>
+										<span className={career.subList}><span className={career.bullet}></span>Top indicator &ldquo;Trendikaterr&rdquo; reached 2,875 weekly users — 14.4% of all chart users</span>
 									</li>
 									<li>
-										Optimized real-time option-chain streaming through virtualization
-										<span className={career.subList}><span className={career.bullet}></span>Cut rendered tick updates from ~200 to ~50 per cycle (~75% reduction), significantly lowering render load on the data-heavy options screen</span>
+										Architected Creator Studio v2, a chart-authoring tool with 17 shape types and a registry
+										<span className={career.subList}><span className={career.bullet}></span>Let creators publish new indicators without custom builds, replacing a one-off process with a reusable system</span>
 									</li>
 									<li>
-										Designed and shipped custom TradingView indicators (CPR, Auto VWAP, Smart Money Concepts)
-										<span className={career.subList}><span className={career.bullet}></span>Converted Pine Script to JS and migrated rendering to native TradingView primitives to improve chart performance and reliability for live trading users</span>
+										Virtualized both option chains so only visible strikes render and subscribe to live WebSocket prices
+										<span className={career.metric}>10× growth · 18.8K → 198K opens/mo</span>
+										<span className={career.subList}><span className={career.bullet}></span>Option chain opens grew 10× (18,858 → 197,977/month) between January and October</span>
 									</li>
 									<li>
-										Shipped an AI pattern-detection toolbar button that renders chart patterns on the terminal in real time
-										<span className={career.subList}><span className={career.bullet}></span>Consumes backend-detected historical pattern data to draw precise, deterministic overlays</span>
+										Built order slicing in Flash for orders placed above the exchange freeze limit
+										<span className={career.metric}>50,735 sliced orders · 517 users in 17 days</span>
 									</li>
 									<li>
-										Integrated Sentry for client-side error monitoring and logging
-										<span className={career.subList}><span className={career.bullet}></span>Surfaced frontend errors that were previously invisible under the existing New Relic setup, significantly improving production debuggability</span>
+										Built position fallback refresh for missed socket updates and a TradingView worker crash guard
+										<span className={career.metric}>93,763 refreshes/week · 15,024 crashes absorbed</span>
+										<span className={career.subList}><span className={career.bullet}></span>Fixed ~13,400 stale screens/day for 5,320 users/week; the crash guard stopped a bug that previously froze every chart on the page</span>
 									</li>
 									<li>
-										Championed accessibility across the platform
-										<span className={career.subList}><span className={career.bullet}></span>Helped teammates on a11y best practices and established WCAG-aligned UI standards adopted team-wide</span>
+										Extended DIY (Pine) indicators from Flash-only to every TradingView terminal via worker-mode execution
+										<span className={career.metric}>17,193 users in 2 weeks · 44% faster</span>
+										<span className={career.subList}><span className={career.bullet}></span>Reached 17,193 users in two weeks with zero main-thread blocking; cut DIY load blocking 44% (3,184 → 1,775 ms)</span>
 									</li>
 									<li>
-										Worked on the trade screen for the US Stocks product
-										<span className={career.subList}><span className={career.bullet}></span>Enabled users to place and manage US equity orders</span>
+										Reworked F&amp;O onboarding with unified state and toolbar CTAs
+										<span className={career.metric}>2.7× growth · ~1,900 → ~5,000 clickers/mo</span>
+										<span className={career.subList}><span className={career.bullet}></span>Also shipped an AI pattern-detection toolbar button, the US Stocks trade screen, commodity/MCX onboarding, and 10+ regulatory pages</span>
+									</li>
+									<li>
+										Integrated Sentry (payment + auth coverage) and CubeAPM jank telemetry, and championed accessibility across the platform
+										<span className={career.metric}>9 PRs · became the team&apos;s WCAG standard</span>
 									</li>
 								</ul>
 								<Badges list={indmoney} block="stack" fullContainer="fullContainer"/>
@@ -182,11 +191,13 @@ export default function Career() {
 const indmoney	= [
 	{ key: 'javascript', 	name: 'JavaScript', 		type: 'devicon' },
 	{ key: 'typescript', 	name: 'TypeScript', 		type: 'devicon' },
+	{ key: 'code', 			name: 'Pine Script', 		type: 'fas' },
 	{ key: 'react', 		name: 'React', 				type: 'devicon' },
 	{ key: 'nextjs', 		name: 'Next.js', 			type: 'devicon' },
 	{ key: 'redux', 		name: 'Redux Toolkit', 	type: 'devicon' },
-	{ key: 'sentry', 		name: 'Sentry', 			type: 'devicon' },
 	{ key: 'wave-square', 	name: 'TradingView Charting Library', type: 'fas' },
+	{ key: 'sentry', 		name: 'Sentry', 			type: 'devicon' },
+	{ key: 'cube', 			name: 'CubeAPM', 			type: 'fas' },
 	{ key: 'git', 			name: 'Git', 				type: 'devicon' },
 ]
 

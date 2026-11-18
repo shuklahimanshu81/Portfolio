@@ -119,9 +119,9 @@ export default function Hero() {
 
 const stats = [
   { value: "4+", label: "Years of experience" },
-  { value: "3", label: "Fintech platforms shipped" },
-  { value: "~75%", label: "Fewer re-renders, option chain" },
-  { value: "~40%", label: "Faster page loads, IPO/NCD" },
+  { value: "384", label: "Pull requests shipped" },
+  { value: "20K+", label: "Weekly active chart users" },
+  { value: "10×", label: "Option-chain growth, Jan–Oct" },
 ];
 
 const statContainer = {
