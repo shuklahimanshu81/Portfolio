@@ -95,7 +95,9 @@ $background: 	--background-dim2;
 			height: 100%;
 			width: 100%;
 			z-index: -1;
-			background: var($background);
+			background: var(--glass-chip-bg);
+			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px);
 			opacity: 100%;
 		}
 	}
@@ -144,8 +146,8 @@ $background: 	--background-dim2;
 }
 
 .fullContainer {
-	border-top: 1px solid var(--primary-dark);
-	background: var(--background-dim);
+	border-top: 1px solid var(--glass-border);
+	background: var(--glass-highlight);
 	margin-left: calc( var(--padding-left) * -1 );
 	margin-right: calc( var(--padding-right) * -1 );
 	margin-bottom: calc( var(--padding-bottom) * -1 );

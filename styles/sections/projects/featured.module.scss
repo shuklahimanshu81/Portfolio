@@ -13,8 +13,7 @@
 	overflow: hidden;
 
 	border-radius: 2rem;
-	background-color: var(--background-dim2);
-    border: 1px solid var(--primary-dark);
+	@include glass(true);
 
 	transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1), border-color .4s ease, box-shadow .4s ease;
 
@@ -119,8 +118,8 @@
 	flex-shrink: 0;
 
 	padding: 2.5rem;
-	border-left: 1px solid var(--primary-dark);
-	background: var(--background-dim);
+	border-left: 1px solid var(--glass-border);
+	background: var(--glass-highlight);
 }
 
 .stat {
@@ -304,7 +303,7 @@
 				flex-direction: row;
 				flex-wrap: wrap;
 				border-left: none;
-				border-top: 1px solid var(--primary-dark);
+				border-top: 1px solid var(--glass-border);
 				padding: var(--size-2x);
 			}
 

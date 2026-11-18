@@ -7,8 +7,9 @@
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	background: color-mix(in srgb, var(--background) 72%, transparent);
-	backdrop-filter: blur(18px);
+	background: color-mix(in srgb, var(--background) 58%, transparent);
+	backdrop-filter: blur(26px) saturate(140%);
+	-webkit-backdrop-filter: blur(26px) saturate(140%);
 }
 
 .scroll {
@@ -27,8 +28,7 @@
 	display: flex;
 	align-items: center;
 	gap: .5rem;
-	background: var(--background-dim2);
-	border: 1px solid var(--primary-dark);
+	@include glass;
 	color: var(--primary);
 	font-family: var(--font-accent);
 	font-size: .8rem;
